@@ -1,0 +1,31 @@
+﻿[
+  {
+    "name": "John",
+    "txt": ["Hello Ann!"]
+  },
+  {
+    "name": "앤",
+    "txt": ["안녕", "우유 좀 사도 될까?"]
+  },
+  {
+    "name": "John",
+    "txt": ["No", "It's out of order."]
+  },
+  {
+    "name": "앤",
+    "txt": ["아쉽네,", "그러면 오렌지 주스는 살 수 있어?"]
+  },
+  {
+    "name": "John",
+    "txt": ["Yes."]
+  },
+  {
+    "name": "앤",
+    "txt": ["고마워!"]
+  },
+  {
+    "name": "John",
+    "txt": ["You're welcome!"],
+    "end": true
+  },
+]
