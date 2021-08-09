@@ -5,11 +5,6 @@ using UnityEngine;
 using UnityEngine.UI;
 
 namespace peroth {
-    public enum CanvasName
-    {
-        Option,
-        Close
-    }
 
     public class OpenningCanvasManager : Singleton<OpenningCanvasManager>
     {
