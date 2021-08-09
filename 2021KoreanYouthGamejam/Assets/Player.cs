@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class Player : MonoBehaviour
 {
@@ -13,13 +14,22 @@ public class Player : MonoBehaviour
     private bool isGround;
     
     public int speed = 4;
-    
+
+    private void Start()
+    {
+        // 카메라 플레이어 따라다니게
+        var CM = GameObject.Find("CMCamera").GetComponent<CinemachineVirtualCamera>();
+        CM.LookAt = transform;
+        CM.Follow = transform;
+    }
+
     private void Update()
     {
         // 이동
         float axis = Input.GetAxisRaw("Horizontal");
         rb.velocity = new Vector2(speed * axis, rb.velocity.y);
-
+        
+        // 플레이어 X축 전환
         if (axis != 0)
         {
             // anim.SetBool("walk", true);
