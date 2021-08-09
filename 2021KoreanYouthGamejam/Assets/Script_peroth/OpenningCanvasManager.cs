@@ -23,8 +23,8 @@ namespace peroth {
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Escape)) 
-                optionCanvas.SetActive(false);
+            if (Input.GetKeyDown(KeyCode.Escape))
+                OptionCloseDown();
         }
 
         public void NewGameButtonDown()
@@ -34,7 +34,7 @@ namespace peroth {
 
         public void LoadGameButtonDown()
         {
-
+             
             Debug.Log("Load Game");
         }
 
