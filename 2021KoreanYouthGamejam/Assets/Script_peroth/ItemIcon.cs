@@ -1,14 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-namespace peroth {
+namespace peroth
+{
     public class ItemIcon : MonoBehaviour
     {
         public int itemCode = -1;
 
-        public void IconButtonDown() => InventoryManager.instance.IconButtonDown(itemCode);
+        public void IconButtonDown()
+        {
+            InventoryManager.instance.IconButtonDown(itemCode);
+        }
 
-        public void DestroyIcon() => ItemIconPoolManager.instance.DestroyItemIcon(gameObject);
+        public void DestroyIcon()
+        {
+            ItemIconPoolManager.instance.DestroyItemIcon(gameObject);
+        }
     }
 }

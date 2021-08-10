@@ -1,11 +1,8 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace peroth {
-
+namespace peroth
+{
     public class OpenningCanvasManager : Singleton<OpenningCanvasManager>
     {
         [SerializeField] private Button newGameButton;
@@ -23,12 +20,17 @@ namespace peroth {
 
         public void LoadGameButtonDown()
         {
-             
             Debug.Log("Load Game");
         }
 
-        public void OptionButtonDown() => optionCanvas.SetActive(true);
+        public void OptionButtonDown()
+        {
+            optionCanvas.SetActive(true);
+        }
 
-        public void CloseButtonDown() => Application.Quit();
+        public void CloseButtonDown()
+        {
+            Application.Quit();
+        }
     }
 }

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace peroth
@@ -7,10 +5,9 @@ namespace peroth
     [DisallowMultipleComponent]
     public class Singleton<T> : MonoBehaviour where T : Singleton<T>
     {
-        public bool dontDestroyOnLoad;
-
         private static volatile T _instance;
-        private static object _syncRoot = new System.Object();
+        private static readonly object _syncRoot = new object();
+        public bool dontDestroyOnLoad;
 
         public static T instance
         {
@@ -21,23 +18,28 @@ namespace peroth
             }
         }
 
-        public static bool isInitialized
+        public static bool isInitialized => _instance != null;
+
+        protected virtual void Awake()
         {
-            get
-            {
-                return _instance != null;
-            }
+            if (_instance != null) Debug.LogError(GetType().Name + " Singleton class is already created.");
+
+            if (dontDestroyOnLoad) DontDestroyOnLoad(this);
+
+            OnAwake();
+        }
+
+        protected virtual void OnDestroy()
+        {
+            if (_instance == this) _instance = null;
         }
 
         public static void Initialize()
         {
-            if (_instance != null)
-            {
-                return;
-            }
+            if (_instance != null) return;
             lock (_syncRoot)
             {
-                _instance = GameObject.FindObjectOfType<T>();
+                _instance = FindObjectOfType<T>();
 
                 if (_instance == null)
                 {
@@ -47,29 +49,8 @@ namespace peroth
             }
         }
 
-        protected virtual void Awake()
+        protected virtual void OnAwake()
         {
-            if (_instance != null)
-            {
-                Debug.LogError(GetType().Name + " Singleton class is already created.");
-            }
-
-            if (dontDestroyOnLoad)
-            {
-                DontDestroyOnLoad(this);
-            }
-
-            OnAwake();
         }
-
-        protected virtual void OnDestroy()
-        {
-            if (_instance == this)
-            {
-                _instance = null;
-            }
-        }
-
-        protected virtual void OnAwake() { }
     }
 }

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace peroth
@@ -16,13 +14,29 @@ namespace peroth
                 gameObject.SetActive(false);
         }
 
-        public void CloseButtonDown() => gameObject.SetActive(false);
-        public void OptionButtonDown() => optionCanvas.SetActive(true);
-        public void KeySettingButtonDown() => keySettingCanvas.SetActive(true);
-        public void DialogueLogButtonDown() => DialogueLogCanvas.SetActive(true);
+        public void CloseButtonDown()
+        {
+            gameObject.SetActive(false);
+        }
+
+        public void OptionButtonDown()
+        {
+            optionCanvas.SetActive(true);
+        }
+
+        public void KeySettingButtonDown()
+        {
+            keySettingCanvas.SetActive(true);
+        }
+
+        public void DialogueLogButtonDown()
+        {
+            DialogueLogCanvas.SetActive(true);
+        }
+
         public void SaveAndQuitButtonDown()
         {
-            // TODO : SAVE ±â´É Ãß°¡
+            // TODO : SAVE ê¸°ëŠ¥ êµ¬í˜„
             Application.Quit();
         }
     }

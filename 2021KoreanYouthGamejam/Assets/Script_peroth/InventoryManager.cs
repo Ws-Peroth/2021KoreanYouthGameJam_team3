@@ -1,9 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.UI;
-using Newtonsoft.Json;
 
 namespace peroth
 {
@@ -26,7 +25,8 @@ namespace peroth
 
             if (!File.Exists(filePath))
             {
-                string initJson = JsonConvert.SerializeObject(new ItemInformationList() { list = new List<ItemInformation>() }, Formatting.Indented);
+                var initJson = JsonConvert.SerializeObject(new ItemInformationList {list = new List<ItemInformation>()},
+                    Formatting.Indented);
                 File.WriteAllText(filePath, initJson);
             }
 
@@ -34,7 +34,7 @@ namespace peroth
             itemInformationList = JsonConvert.DeserializeObject<ItemInformationList>(loadJson);
 
             GameObject icon;
-            for (int i = 0; i < itemInformationList.list.Count; i++)
+            for (var i = 0; i < itemInformationList.list.Count; i++)
             {
                 icon = ItemIconPoolManager.instance.CreatItemIcon();
                 icon.transform.SetParent(iconTransform);
@@ -42,7 +42,6 @@ namespace peroth
                 icon.GetComponent<ItemIcon>().itemCode = i;
                 icon.GetComponent<Image>().sprite = imageList[i];
             }
-
         }
 
         public void IconButtonDown(int iconCode)
@@ -55,6 +54,7 @@ namespace peroth
             itemimage.sprite = imageList[iconCode];
         }
     }
+
     public class ItemInformationList
     {
         public List<ItemInformation> list = new List<ItemInformation>();
@@ -64,10 +64,11 @@ namespace peroth
     {
         public string name;
         public string information;
+
         public ItemInformation(string name, string information)
         {
             this.name = name;
             this.information = information;
         }
     }
-}   
+}
