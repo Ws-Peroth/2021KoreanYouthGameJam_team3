@@ -31,7 +31,7 @@ namespace peroth
             float smallVector;
             float bigVector;
 
-            // º¤ÅÍ°ª ÃÊ±âÈ­
+            // ï¿½ï¿½ï¿½Í°ï¿½ ï¿½Ê±ï¿½È­
             if (rotationA < rotationB)
             {
                 smallVector = rotationA;
@@ -97,7 +97,7 @@ namespace peroth
             #endregion
         }
 
-        public void PlayerApproachNear() => IsDetected();
+        public void PlayerApproachNear() => IsDetected(target.GetComponent<Player>());
 
         private void OnDrawGizmos()
         {

@@ -32,7 +32,7 @@ namespace peroth
             Vector2 smallVector;
             Vector2 bigVector;
 
-            // º¤ÅÍ°ª ÃÊ±âÈ­
+            // ï¿½ï¿½ï¿½Í°ï¿½ ï¿½Ê±ï¿½È­
             if (positionA.x < positionB.x)
             {
                 smallVector = positionA;
@@ -53,38 +53,38 @@ namespace peroth
             {
                 Vector2 velocityValue;
 
-                // ¹æÇâ º¤ÅÍ
+                // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
                 if (gotoBigPosition)
                     velocityValue = bigVector - smallVector;
                 else
                     velocityValue = smallVector - bigVector;
 
-                // BigPosition¿¡ µµ´Þ ÇÏ¿´À» ¶§
+                // BigPositionï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ï¿ï¿½ï¿½ï¿½ ï¿½ï¿½
                 if (transform.position.x >= bigVector.x)
                 {
-                    // ¹æÇâ º¤ÅÍ ¹ÝÀü
+                    // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
                     velocityValue = smallVector - bigVector;
                     gotoBigPosition = false;
                     spriteRenderer.flipX = true;
 
-                    // °¡¼Óµµ ÃÊ±âÈ­
+                    // ï¿½ï¿½ï¿½Óµï¿½ ï¿½Ê±ï¿½È­
                     gameObjectRigidbody.velocity = Vector2.zero;
                     yield return new WaitForSeconds(delayTime);
                 }
-                // SmallPosition¿¡ µµ´Þ ÇÏ¿´À» ¶§
+                // SmallPositionï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ï¿ï¿½ï¿½ï¿½ ï¿½ï¿½
                 else if (transform.position.x <= smallVector.x)
                 {
-                    // ¹æÇâ º¤ÅÍ ¹ÝÀü
+                    // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
                     velocityValue = bigVector - smallVector;
                     gotoBigPosition = true;
                     spriteRenderer.flipX = false;
 
-                    // °¡¼Óµµ ÃÊ±âÈ­
+                    // ï¿½ï¿½ï¿½Óµï¿½ ï¿½Ê±ï¿½È­
                     gameObjectRigidbody.velocity = Vector2.zero;
                     yield return new WaitForSeconds(delayTime);
                 }
 
-                // ¿¬»êÇÑ °¡¼Óµµ Àû¿ë
+                // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Óµï¿½ ï¿½ï¿½ï¿½ï¿½
                 gameObjectRigidbody.velocity = velocityValue * 0.5f;
                 yield return null;
             }
@@ -105,7 +105,7 @@ namespace peroth
             #endregion
         }
 
-        public void PlayerApproachNear() => IsDetected();
+        public void PlayerApproachNear() => IsDetected(target.GetComponent<Player>());
         
 
         private void OnDrawGizmos()

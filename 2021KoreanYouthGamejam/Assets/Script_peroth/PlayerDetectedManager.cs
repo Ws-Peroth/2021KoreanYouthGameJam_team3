@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,13 +7,11 @@ namespace peroth
 {
     public class PlayerDetectedManager : Singleton<PlayerDetectedManager>
     {
-        public GameObject player;
-        public Player playerScript;
-
-        public void PlayerDetected()
+        public void PlayerDetected(Player player)
         {
-            Debug.Log("GAME OVER");
+            if (player.isCloaking) return;
 
+            Debug.Log("GAME OVER");
         }
     }
 }

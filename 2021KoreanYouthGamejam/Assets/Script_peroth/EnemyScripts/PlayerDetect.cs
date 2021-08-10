@@ -22,9 +22,9 @@ namespace peroth
             else return false;
         }
 
-        public void IsDetected()
+        public void IsDetected(Player player)
         {
-            PlayerDetectedManager.instance.PlayerDetected();
+            PlayerDetectedManager.instance.PlayerDetected(player);
         }
     }
 }
