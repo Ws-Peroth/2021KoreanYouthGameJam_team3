@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class Player : MonoBehaviour
 {
@@ -22,38 +23,59 @@ public class Player : MonoBehaviour
     public TalkingManager manager;
 
     private bool isGround;
+    public bool isCloaking = false;
 
     private void Start()
     {
         manager = FindObjectOfType<TalkingManager>();
+        sr = gameObject.GetComponent<SpriteRenderer>();
     }
 
     private void Update()
     {
         #region 이동
 
-        var axis = 0f;
-        if (Input.GetKey(KeyCode.LeftArrow))
-            axis = -1f;
-        else if (Input.GetKey(KeyCode.RightArrow))
-            axis = 1f;
-        else if (Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.RightArrow)) axis = 0f;
-        rb.velocity = new Vector2(speed * axis, rb.velocity.y);
+        if (!isCloaking)
+        {
+            var axis = 0f;
+            if (Input.GetKey(KeyCode.LeftArrow))
+                axis = -1f;
+            else if (Input.GetKey(KeyCode.RightArrow))
+                axis = 1f;
+            else if (Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.RightArrow)) axis = 0f;
+            rb.velocity = new Vector2(speed * axis, rb.velocity.y);
 
-        // 플레이어 X축 전환
-        if (axis != 0)
-            // anim.SetBool("walk", true);
-            FlipCharacter(axis);
-        // else anim.SetBool("walk", false);
+            // 플레이어 X축 전환
+            if (axis != 0)
+                // anim.SetBool("walk", true);
+                FlipCharacter(axis);
+            // else anim.SetBool("walk", false);
 
-        // 점프
-        isGround = Physics2D.OverlapCircle(
-            (Vector2) transform.position + new Vector2(0, -0.5f),
-            0.07f,
-            1 << LayerMask.NameToLayer("Ground"));
+            // 점프
+            isGround = Physics2D.OverlapCircle(
+                (Vector2) transform.position + new Vector2(0, -0.5f),
+                0.07f,
+                1 << LayerMask.NameToLayer("Ground"));
 
-        // anim.SetBool("jump", !isGround);
-        if (Input.GetKeyDown(KeyCode.UpArrow) && isGround) Jump();
+            // anim.SetBool("jump", !isGround);
+            if (Input.GetKeyDown(KeyCode.UpArrow) && isGround) Jump();
+        }
+
+        #endregion
+
+        #region 아이템 사용
+
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            Debug.Log("W Down");
+            Cloak();
+        }
+
+        if (Input.GetKeyUp(KeyCode.W))
+        {
+            Debug.Log("W Up");
+            Uncloak();
+        }
 
         #endregion
     }
@@ -95,5 +117,27 @@ public class Player : MonoBehaviour
             else
                 manager.instantComplete = true;
         }
+    }
+
+    private void Cloak()
+    {
+        StartCoroutine(ChangeColorOverTime(sr.color, new Color(1f, 1f, 1f, 0.3f), 0.5f));
+        isCloaking = true;
+    }
+
+    private void Uncloak()
+    {
+        StartCoroutine(ChangeColorOverTime(sr.color, new Color(1f, 1f, 1f, 1f), 0.5f));
+        isCloaking = false;
+    }
+    
+    IEnumerator ChangeColorOverTime(Color start, Color end, float duration) {
+        for (float t=0f;t<duration;t+=Time.deltaTime) {
+            float normalizedTime = t/duration;
+            //right here, you can now use normalizedTime as the third parameter in any Lerp from start to end
+            sr.color = Color.Lerp(start, end, normalizedTime);
+            yield return null;
+        }
+        sr.color = end; //without this, the value will end at something like 0.9992367
     }
 }
