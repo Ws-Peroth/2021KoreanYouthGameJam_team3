@@ -44,7 +44,19 @@ public class Player : MonoBehaviour
     private void Update()
     {
         // 이동
-        float axis = Input.GetAxisRaw("Horizontal");
+        float axis = 0f;
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            axis = -1f;
+        }
+        else if (Input.GetKey(KeyCode.RightArrow))
+        {
+            axis = 1f;
+        }
+        else if (Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.RightArrow))
+        {
+            axis = 0f;
+        }
         rb.velocity = new Vector2(speed * axis, rb.velocity.y);
         
         // 플레이어 X축 전환
@@ -98,6 +110,10 @@ public class Player : MonoBehaviour
             if (!manager.isDisplayingDialogue)
             {
                 manager.NextDialogue(); // 다음으로 넘어가기
+            }
+            else
+            {
+                manager.instantComplete = true;
             }
         }
     }

@@ -22,6 +22,7 @@ public class TalkingManager : MonoBehaviour
 
     private string dialogueType = "conversation";
     public bool isDisplayingDialogue = false;
+    public bool instantComplete = false;
 
     private void Start()
     {
@@ -104,13 +105,15 @@ public class TalkingManager : MonoBehaviour
         }
 
         // 출력
-        for (int i = 0; i < player.dialogues.elements[player.targetNPC.posNum].txt[player.targetNPC.txtNum].Length; i++) // 내용을 차례대로 출력
+        for (int i = 0; !instantComplete && i < player.dialogues.elements[player.targetNPC.posNum].txt[player.targetNPC.txtNum].Length; i++) // 내용을 차례대로 출력
         {
             yield return new WaitForSeconds(0.05f); // 뜸 주고
             textTxt.text += player.dialogues.elements[player.targetNPC.posNum].txt[player.targetNPC.txtNum][i].ToString(); // 한글자 출력하고
             if (player.targetNPC.voice) player.targetNPC.voice.Play(); // 목소리 있으면 재생하고
         }
+        textTxt.text = player.dialogues.elements[player.targetNPC.posNum].txt[player.targetNPC.txtNum];
         isDisplayingDialogue = false;
+        instantComplete = false;
     }
 
     public void NextDialogue() // 다음으로 넘어가기
