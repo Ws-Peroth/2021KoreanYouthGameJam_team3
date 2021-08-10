@@ -14,9 +14,11 @@ public class TalkingManager : MonoBehaviour
     public Image rightImage;
     public Image leftImage;
     public Image eventIllustration;
+    public RectTransform dialoguePanel;
     public List<string> charactersSpeaking = new List<string>();
     public bool isDisplayingDialogue;
     public bool instantComplete;
+    public bool hidingUI;
 
     private readonly Dictionary<string, Sprite> dialogueImages = new Dictionary<string, Sprite>();
 
@@ -27,6 +29,23 @@ public class TalkingManager : MonoBehaviour
         charactersSpeaking.Add(string.Empty);
         charactersSpeaking.Add(string.Empty);
         player = FindObjectOfType<Player>();
+    }
+
+    private void Update()
+    {
+        if (dialogueType == "event")
+        {
+            if (Input.GetKeyDown(KeyCode.LeftShift))
+            {
+                hidingUI = true;
+                dialoguePanel.gameObject.SetActive(false);
+            }
+            if (Input.GetKeyUp(KeyCode.LeftShift))
+            {
+                hidingUI = false;
+                dialoguePanel.gameObject.SetActive(true);
+            }
+        }
     }
 
     public void StartDialogue() // 대화 시작하기

@@ -40,6 +40,11 @@ public class Player : MonoBehaviour
             1 << LayerMask.NameToLayer("Ground"));
         
         #region 이동
+        
+        isGround = Physics2D.OverlapCircle(
+            (Vector2) transform.position + new Vector2(0, -1f),
+            0.07f,
+            1 << LayerMask.NameToLayer("Ground"));
 
         if (!isCloaking)
         {
@@ -112,6 +117,8 @@ public class Player : MonoBehaviour
 
     public void CheckInput()
     {
+        if (manager.hidingUI) return;
+        
         if (Input.GetKeyDown(KeyCode.Space))
         {
             if (!manager.isDisplayingDialogue)
