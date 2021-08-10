@@ -1132,7 +1132,7 @@ GameObject:
   - component: {fileID: 7957373105355831857}
   - component: {fileID: 327461414303135038}
   m_Layer: 0
-  m_Name: "\uD50C\uB808\uC774\uC5B4\uBE14_\uC2A4\uCF08\uB808\uD1A4_pose02_run"
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
