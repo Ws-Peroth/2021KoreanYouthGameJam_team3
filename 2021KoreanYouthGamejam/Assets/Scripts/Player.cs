@@ -1,5 +1,5 @@
-using UnityEngine;
 using System.Collections;
+using UnityEngine;
 
 public class Player : MonoBehaviour
 {
@@ -21,9 +21,9 @@ public class Player : MonoBehaviour
     public DialogueElements dialogues; // 대화 저장소
 
     public TalkingManager manager;
+    public bool isCloaking;
 
     private bool isGround;
-    public bool isCloaking = false;
 
     private void Start()
     {
@@ -130,14 +130,17 @@ public class Player : MonoBehaviour
         StartCoroutine(ChangeColorOverTime(sr.color, new Color(1f, 1f, 1f, 1f), 0.5f));
         isCloaking = false;
     }
-    
-    IEnumerator ChangeColorOverTime(Color start, Color end, float duration) {
-        for (float t=0f;t<duration;t+=Time.deltaTime) {
-            float normalizedTime = t/duration;
+
+    private IEnumerator ChangeColorOverTime(Color start, Color end, float duration)
+    {
+        for (var t = 0f; t < duration; t += Time.deltaTime)
+        {
+            var normalizedTime = t / duration;
             //right here, you can now use normalizedTime as the third parameter in any Lerp from start to end
             sr.color = Color.Lerp(start, end, normalizedTime);
             yield return null;
         }
+
         sr.color = end; //without this, the value will end at something like 0.9992367
     }
 }
