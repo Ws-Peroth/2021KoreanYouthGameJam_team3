@@ -34,6 +34,11 @@ public class Player : MonoBehaviour
     private void Update()
     {
         #region 이동
+        
+        isGround = Physics2D.OverlapCircle(
+            (Vector2) transform.position + new Vector2(0, -1f),
+            0.07f,
+            1 << LayerMask.NameToLayer("Ground"));
 
         if (!isCloaking)
         {
@@ -52,10 +57,6 @@ public class Player : MonoBehaviour
             // else anim.SetBool("walk", false);
 
             // 점프
-            isGround = Physics2D.OverlapCircle(
-                (Vector2) transform.position + new Vector2(0, -0.5f),
-                0.07f,
-                1 << LayerMask.NameToLayer("Ground"));
 
             // anim.SetBool("jump", !isGround);
             if (Input.GetKeyDown(KeyCode.UpArrow) && isGround) Jump();
@@ -110,6 +111,8 @@ public class Player : MonoBehaviour
 
     public void CheckInput()
     {
+        if (manager.hidingUI) return;
+        
         if (Input.GetKeyDown(KeyCode.Space))
         {
             if (!manager.isDisplayingDialogue)
