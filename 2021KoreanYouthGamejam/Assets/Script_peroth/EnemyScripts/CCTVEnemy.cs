@@ -97,10 +97,7 @@ namespace peroth
             #endregion
         }
 
-        public void PlayerApproachNear()
-        {
-            Debug.Log("확신 단계");
-        }
+        public void PlayerApproachNear() => IsDetected();
 
         private void OnDrawGizmos()
         {

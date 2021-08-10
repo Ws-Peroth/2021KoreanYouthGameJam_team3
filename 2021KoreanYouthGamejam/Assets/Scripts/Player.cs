@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public bool isDetected;
+
     public Rigidbody2D rb;
 
     // public Animator anim; // 나중에 애니메이션용으로

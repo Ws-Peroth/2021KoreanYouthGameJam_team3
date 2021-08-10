@@ -21,5 +21,10 @@ namespace peroth
                 return Vector3.Dot(direction.normalized, transformValue) > dotValue;
             else return false;
         }
+
+        public void IsDetected()
+        {
+            PlayerDetectedManager.instance.PlayerDetected();
+        }
     }
 }
