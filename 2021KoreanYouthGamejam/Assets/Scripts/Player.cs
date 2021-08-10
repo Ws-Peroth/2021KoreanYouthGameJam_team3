@@ -25,20 +25,20 @@ public class Player : MonoBehaviour
     public TextAsset jsonText;
     
     [HideInInspector]
-    public Events events; // 대화 저장소
-    [HideInInspector]
     public string path;
 
-    public DialogueElements dialogues;
+    public DialogueElements dialogues; // 대화 저장소
     
     public TalkingManager manager;
 
     private void Start()
     {
-        // 카메라 플레이어 따라다니게
-        var CM = GameObject.Find("CMCamera").GetComponent<CinemachineVirtualCamera>();
+        manager = FindObjectOfType<TalkingManager>();
+
+        /*// 카메라 플레이어 따라다니게
+        CinemachineVirtualCamera CM = GameObject.Find("CMCamera").GetComponent<CinemachineVirtualCamera>();
         CM.LookAt = transform;
-        CM.Follow = transform;
+        CM.Follow = transform;*/
     }
 
     private void Update()
@@ -78,17 +78,10 @@ public class Player : MonoBehaviour
     {
         targetNPC = obj;
         // JSON 불러올 준비
-        // path = Application.dataPath + "/StreamingAssets" + "/Local/" + targetNPC.jsonName + ".json"; // 유저 패치가 있을 수도 있는 버젼의 주소
         jsonText = Resources.Load<TextAsset>("Dialogues/" + targetNPC.jsonName); // 원본 파일 (리소스)
         
         // 불러온 JSON 저장
-        
-        events = new Events(); // 객체 생성
-        
-        string readText = File.ReadAllText(path); // 주소에서 JSON 읽기
-        events = (Events) JsonUtility.FromJson<Events>("{\"elements\":" + readText + "}"); // 객체에다 읽은 JSON 넣기
-        
-        dialogues = (DialogueElements) JsonUtility.FromJson<DialogueElements>("{\"elements\":" + jsonText.text + "}"); // 리소스를 이용해 대화를 표시하는 방법. 씀.
+        dialogues = (DialogueElements) JsonUtility.FromJson<DialogueElements>("{\"elements\":" + jsonText.text + "}"); // 리소스를 이용해 대화를 표시하는 방법.
 
     }
     
@@ -100,7 +93,6 @@ public class Player : MonoBehaviour
     
     public void CheckInput()
     {
-        Event element = events.elements[targetNPC.posNum];
         if (Input.GetKeyDown(KeyCode.Space))
         {
             if (!manager.isDisplayingDialogue)
@@ -108,13 +100,6 @@ public class Player : MonoBehaviour
                 manager.NextDialogue(); // 다음으로 넘어가기
             }
         }
-        /*if (Input.GetKeyDown(KeyCode.Period))
-        {
-            targetNPC.posNum = 0;
-            targetNPC.txtNum = 0;
-            dialogueActive = false;
-            manager.panel.gameObject.SetActive(false);
-        }*/
-        
     }
+    
 }

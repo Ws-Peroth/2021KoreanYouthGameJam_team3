@@ -1,7 +1,8 @@
 ﻿[
   {
     "name": "John",
-    "txt": ["Hello Ann!"]
+    "txt": ["Hello Ann!"],
+    "type": "conversation"
   },
   {
     "name": "앤",
@@ -25,7 +26,41 @@
   },
   {
     "name": "John",
-    "txt": ["You're welcome!"],
-    "end": true
+    "txt": ["You're welco... Oh! Isn't that Charles?"]
   },
+  {
+    "name": "앤",
+    "txt": ["어? 진짜 찰스다!", "찰스야!!"]
+  },
+  {
+    "name": "Chaㄹ스",
+    "txt": ["Oh! Hello 앤! 오랜만에 See!"]
+  },
+  {
+    "name": "앤",
+    "txt": ["그 영어와 한국어 섞어 말하는 버릇 아직도 안 고쳤구나..."]
+  },
+  {
+    "name": "Chaㄹ스",
+    "txt": ["하Ha..."]
+  },
+  {
+    "name": "John",
+    "txt": ["Well, that's no problem!", "How about we go have dinner together tonight?"],
+    "type": "event",
+    "image": "restaurant"
+  },
+  {
+    "name": "앤",
+    "txt": ["그래! 오랜만에 만났는데 저녁 같이 먹는것도 좋지.", "찰스 너는?"]
+  },
+  {
+    "name": "Chaㄹ스",
+    "txt": ["No 문제!", "나는 you들과 함께 dinner 먹을 생각에 너무 excited!"],
+    "type": "conversation"
+  },
+  {
+    "name": "John",
+    "txt": ["Great!", "See you in the restaurant at dinner!"]
+  }
 ]
