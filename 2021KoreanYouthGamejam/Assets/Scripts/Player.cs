@@ -121,17 +121,17 @@ public class Player : MonoBehaviour
 
     private void Cloak()
     {
-        StartCoroutine(changeColorOverTime(sr.color, new Color(1f, 1f, 1f, 0.3f), 0.5f));
+        StartCoroutine(ChangeColorOverTime(sr.color, new Color(1f, 1f, 1f, 0.3f), 0.5f));
         isCloaking = true;
     }
 
     private void Uncloak()
     {
-        StartCoroutine(changeColorOverTime(sr.color, new Color(1f, 1f, 1f, 1f), 0.5f));
+        StartCoroutine(ChangeColorOverTime(sr.color, new Color(1f, 1f, 1f, 1f), 0.5f));
         isCloaking = false;
     }
     
-    IEnumerator changeColorOverTime(Color start, Color end, float duration) {
+    IEnumerator ChangeColorOverTime(Color start, Color end, float duration) {
         for (float t=0f;t<duration;t+=Time.deltaTime) {
             float normalizedTime = t/duration;
             //right here, you can now use normalizedTime as the third parameter in any Lerp from start to end
