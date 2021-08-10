@@ -23,6 +23,11 @@ namespace peroth
             minValueText.text = $"{minValue}";
             maxValueText.text = $"{maxValue}";
         }
-        void Update() => currentValue.text = slider.value <= minValue || slider.value >= maxValue ? "" : $"{slider.value}";
+        
+        
+        void Update() => 
+            currentValue.text = 
+            slider.value <= minValue || slider.value >= maxValue ? "" : $"{slider.value}";
+
     }
 }

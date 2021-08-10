@@ -16,12 +16,6 @@ namespace peroth {
         [SerializeField] private GameObject background;
         [SerializeField] private GameObject optionCanvas;
 
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.Escape))
-                OptionCloseDown();
-        }
-
         public void NewGameButtonDown()
         {
             Debug.Log("New Game");
@@ -34,8 +28,6 @@ namespace peroth {
         }
 
         public void OptionButtonDown() => optionCanvas.SetActive(true);
-
-        public void OptionCloseDown() => optionCanvas.SetActive(false);
 
         public void CloseButtonDown() => Application.Quit();
     }
