@@ -1,7 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using UnityEditor;
+using UnityEngine;
 
 namespace peroth
 {
@@ -19,12 +18,46 @@ namespace peroth
         public float angleRange = 45f;
         public float distance = 7f;
 
-        Vector3 direction;
-        Vector3 transformValue;
+        public bool isNeutralized;
 
-        float dotValue = 0f;
+        private Vector3 direction;
 
-        private void Start() => StartCoroutine(EnemyMove());
+        private float dotValue;
+        private Vector3 transformValue;
+
+        private void Start()
+        {
+            StartCoroutine(EnemyMove());
+        }
+
+        private void Update()
+        {
+            #region CalculateDistanceFromPlayer
+
+            transformValue = spriteRenderer.flipX ? transform.right * -1 : transform.right;
+
+            dotValue = Mathf.Cos(Mathf.Deg2Rad * (angleRange / 2));
+            direction = target.position - transform.position;
+
+            isCollisionNear = PlayerApproachCheck(distance, direction, transformValue, dotValue);
+
+            if (isCollisionNear) PlayerApproachNear();
+
+            #endregion
+        }
+
+        private void OnDrawGizmos()
+        {
+            #region DrawDetectRange
+
+            var transformValue = spriteRenderer.flipX ? transform.right * -1 : transform.right;
+
+            Handles.color = isCollisionNear ? _red : _blue;
+            Handles.DrawSolidArc(transform.position, Vector3.forward, transformValue, angleRange / 2, distance);
+            Handles.DrawSolidArc(transform.position, Vector3.forward, transformValue, -angleRange / 2, distance);
+
+            #endregion
+        }
 
         public IEnumerator EnemyMove()
         {
@@ -47,13 +80,13 @@ namespace peroth
             yield return new WaitForSeconds(1f);
 
             #region HumanEnemyMove
-            bool gotoBigPosition = true;
 
-            Vector3 rotationValue = Vector3.forward;
+            var gotoBigPosition = true;
+
+            var rotationValue = Vector3.forward;
 
             while (true)
             {
-
                 if (gotoBigPosition)
                     rotationValue = Vector3.forward;
                 else
@@ -67,7 +100,8 @@ namespace peroth
                     yield return new WaitForSeconds(delayTime);
                     rotationValue = Vector3.back;
                 }
-                if(transform.rotation.eulerAngles.z <= smallVector)
+
+                if (transform.rotation.eulerAngles.z <= smallVector)
                 {
                     gotoBigPosition = true;
                     rotationValue = Vector3.zero;
@@ -80,34 +114,21 @@ namespace peroth
 
                 yield return null;
             }
+
             #endregion
         }
 
-        void Update()
+        public void PlayerApproachNear()
         {
-            #region CalculateDistanceFromPlayer
-            transformValue = spriteRenderer.flipX ? transform.right * -1 : transform.right;
-
-            dotValue = Mathf.Cos(Mathf.Deg2Rad * (angleRange / 2));
-            direction = target.position - transform.position;
-
-            isCollisionNear = PlayerApproachCheck(distance, direction, transformValue, dotValue);
-
-            if (isCollisionNear) PlayerApproachNear();
-            #endregion
+            if (isNeutralized) return;
+            IsDetected(target.GetComponent<Player>());
         }
 
-        public void PlayerApproachNear() => IsDetected(target.GetComponent<Player>());
-
-        private void OnDrawGizmos()
+        public IEnumerator Neutralize()
         {
-            #region DrawDetectRange
-            Vector3 transformValue = spriteRenderer.flipX ? transform.right * -1 : transform.right;
-
-            Handles.color = isCollisionNear ? _red : _blue;
-            Handles.DrawSolidArc(transform.position, Vector3.forward, transformValue, angleRange / 2, distance);
-            Handles.DrawSolidArc(transform.position, Vector3.forward, transformValue, -angleRange / 2, distance);
-            #endregion
+            isNeutralized = true;
+            yield return new WaitForSeconds(3f);
+            isNeutralized = false;
         }
     }
 }

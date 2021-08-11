@@ -1,7 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using UnityEditor;
+using UnityEngine;
 
 namespace peroth
 {
@@ -19,13 +18,46 @@ namespace peroth
         public float distance = 5f;
         public float delayTime = 0.1f;
 
-        Vector3 direction;
-        Vector3 transformValue;
+        private Vector3 direction;
 
-        float dotValue = 0f;
+        private float dotValue;
+        private Vector3 transformValue;
 
 
-        private void Start() => StartCoroutine(EnemyMove());
+        private void Start()
+        {
+            StartCoroutine(EnemyMove());
+        }
+
+        private void Update()
+        {
+            #region CalculateDistanceFromPlayer
+
+            transformValue = spriteRenderer.flipX ? transform.right * -1 : transform.right;
+
+            dotValue = Mathf.Cos(Mathf.Deg2Rad * (angleRange / 2));
+            direction = target.position - transform.position;
+
+            isCollisionNear = PlayerApproachCheck(distance, direction, transformValue, dotValue);
+
+            if (isCollisionNear) PlayerApproachNear();
+
+            #endregion
+        }
+
+
+        private void OnDrawGizmos()
+        {
+            #region DrawDetectRange
+
+            var transformValue = spriteRenderer.flipX ? transform.right * -1 : transform.right;
+
+            Handles.color = isCollisionNear ? _red : _blue;
+            Handles.DrawSolidArc(transform.position, Vector3.forward, transformValue, angleRange / 2, distance);
+            Handles.DrawSolidArc(transform.position, Vector3.forward, transformValue, -angleRange / 2, distance);
+
+            #endregion
+        }
 
         public IEnumerator EnemyMove()
         {
@@ -47,7 +79,8 @@ namespace peroth
             yield return new WaitForSeconds(1f);
 
             #region HumanEnemyMove
-            bool gotoBigPosition = true;
+
+            var gotoBigPosition = true;
 
             while (true)
             {
@@ -88,35 +121,13 @@ namespace peroth
                 gameObjectRigidbody.velocity = velocityValue * 0.5f;
                 yield return null;
             }
+
             #endregion
         }
 
-        void Update()
+        public void PlayerApproachNear()
         {
-            #region CalculateDistanceFromPlayer
-            transformValue = spriteRenderer.flipX ? transform.right * -1 : transform.right;
-
-            dotValue = Mathf.Cos(Mathf.Deg2Rad * (angleRange / 2));
-            direction = target.position - transform.position;
-
-            isCollisionNear = PlayerApproachCheck(distance, direction, transformValue, dotValue);
-
-            if (isCollisionNear) PlayerApproachNear();
-            #endregion
-        }
-
-        public void PlayerApproachNear() => IsDetected(target.GetComponent<Player>());
-        
-
-        private void OnDrawGizmos()
-        {
-            #region DrawDetectRange
-            Vector3 transformValue = spriteRenderer.flipX ? transform.right * -1 : transform.right;
-
-            Handles.color = isCollisionNear ? _red : _blue;
-            Handles.DrawSolidArc(transform.position, Vector3.forward, transformValue, angleRange / 2, distance);
-            Handles.DrawSolidArc(transform.position, Vector3.forward, transformValue, -angleRange / 2, distance);
-            #endregion
+            IsDetected(target.GetComponent<Player>());
         }
     }
 }

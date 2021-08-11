@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace peroth
@@ -9,8 +6,9 @@ namespace peroth
     {
         public void PlayerDetected(Player player)
         {
-            if (player.isCloaking) return;
+            if (player.isUsingItem) return;
 
+            player.isDetected = true;
             Debug.Log("GAME OVER");
         }
     }
