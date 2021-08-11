@@ -29,6 +29,8 @@ namespace peroth
 
         public void ThisTabOpen()
         {
+            Time.timeScale = 0;
+
             menuTab.SetActive(true);
             InventoryManager.instance.CreatIcon();
             Debug.Log("TabOpen");
@@ -38,6 +40,7 @@ namespace peroth
         {
             if (menuTab.activeSelf)
             {
+                Time.timeScale = 1;
                 Debug.Log("Close ManuTab");
                 menuTab.SetActive(false);
             }
