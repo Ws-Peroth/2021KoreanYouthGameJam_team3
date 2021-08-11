@@ -6,48 +6,49 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public bool isDetected;
+    [HideInInspector] public bool isDetected;
 
-    public Rigidbody2D rb;
+    private Rigidbody2D rb;
 
-    // public Animator anim; // 나중에 애니메이션용으로
-    public List<SpriteRenderer> srList = new List<SpriteRenderer>();
+    private Animator anim;
+    private List<SpriteRenderer> srList = new List<SpriteRenderer>();
 
-    public float isGroundCheckCirclePos;
+    [SerializeField] private Vector2 isGroundCheckCirclePos;
 
-    public int speed = 4;
+    [SerializeField] private int speed = 3;
+    [SerializeField] private int runningSpeed = 5;
 
     [HideInInspector] public NPC targetNPC;
 
-    [HideInInspector] public bool dialogueActive;
+    private TextAsset jsonText;
 
-    public TextAsset jsonText;
+    [HideInInspector] public DialogueElements dialogues; // 대화 저장소
 
-    [HideInInspector] public string path;
+    private TalkingManager manager;
+    [HideInInspector] public bool isUsingItem;
 
-    public DialogueElements dialogues; // 대화 저장소
-
-    public TalkingManager manager;
-    public bool isUsingItem;
-
-    public CCTVEnemy targetCCTV;
-    public bool manipulatingCam;
+    private CCTVEnemy targetCCTV;
+    private bool manipulatingCam;
     private readonly Color cloackedColor = new Color(1f, 1f, 1f, 0.3f);
 
-    private bool isGround;
-
     private readonly Color normalColor = new Color(1f, 1f, 1f, 1f);
+    
+    private bool isGround;
+    private bool moving;
+    private bool running;
     private List<CCTVEnemy> visibleCCTVList = new List<CCTVEnemy>();
 
     private void Start()
     {
         manager = FindObjectOfType<TalkingManager>();
         srList = GetComponentsInChildren<SpriteRenderer>().ToList();
+        rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
     }
 
     private void Update()
     {
-        // Movement();
+        Movement();
 
         UseItem();
     }
@@ -217,14 +218,12 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.W))
         {
-            Debug.Log("W Down");
-            Cloak();
+            StartCoroutine(Cloak());
         }
 
         if (Input.GetKeyUp(KeyCode.W))
         {
-            Debug.Log("W Up");
-            Uncloak();
+            StartCoroutine(Uncloak());
         }
     }
 
@@ -233,31 +232,66 @@ public class Player : MonoBehaviour
         #region 이동
 
         isGround = Physics2D.OverlapCircle(
-            (Vector2) transform.position + new Vector2(0, isGroundCheckCirclePos),
+            (Vector2) transform.position + isGroundCheckCirclePos,
             0.07f,
             1 << LayerMask.NameToLayer("Ground"));
 
         if (!isUsingItem)
         {
             var axis = 0f;
+
             if (Input.GetKey(KeyCode.LeftArrow))
                 axis = -1f;
             else if (Input.GetKey(KeyCode.RightArrow))
                 axis = 1f;
-            else if (Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.RightArrow)) axis = 0f;
-
-            rb.velocity = new Vector2(speed * axis, rb.velocity.y);
-
+            else if (Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.RightArrow))
+            {
+                axis = 0f;
+            }
+            
             // 플레이어 X축 전환
             if (axis != 0)
-                // anim.SetBool("walk", true);
+            {
                 FlipCharacter(axis);
-            // else anim.SetBool("walk", false);
+                moving = true;
+            }
+            else
+            {
+                moving = false;
+            }
+
+            if (Input.GetKey(KeyCode.LeftShift))
+            {
+                rb.velocity = new Vector2(runningSpeed * axis, rb.velocity.y);
+                running = moving;
+            }
+            else
+            {
+                rb.velocity = new Vector2(speed * axis, rb.velocity.y);
+                running = false;
+            }
 
             // 점프
             // anim.SetBool("jump", !isGround);
             if (Input.GetKeyDown(KeyCode.UpArrow) && isGround) Jump();
         }
+        else
+        {
+            moving = false;
+        }
+
+        if (running)
+        {
+            anim.SetBool("run", moving);
+            anim.SetBool("walk", false);
+        }
+        else
+        {
+            anim.SetBool("walk", moving);
+            anim.SetBool("run", false);
+        }
+        
+        anim.SetBool("idle", !moving);
 
         #endregion
     }
@@ -265,7 +299,7 @@ public class Player : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position + new Vector3(0, isGroundCheckCirclePos), 0.07f);
+        Gizmos.DrawWireSphere(isGroundCheckCirclePos, 0.07f);
     }
 
     private bool PositionCheck(float position)
@@ -314,7 +348,7 @@ public class Player : MonoBehaviour
     public void ResetTarget()
     {
         targetNPC = null;
-        path = null;
+        // path = null;
     }
 
     public void CheckInput()
@@ -330,15 +364,17 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void Cloak()
+    private IEnumerator Cloak()
     {
-        StartCoroutine(ChangeColorOverTime(normalColor, cloackedColor, 0.5f));
         isUsingItem = true;
+        StartCoroutine(ChangeColorOverTime(normalColor, cloackedColor, 0.5f));
+        yield return new WaitForSeconds(0.5f);
     }
 
-    private void Uncloak()
+    private IEnumerator Uncloak()
     {
         StartCoroutine(ChangeColorOverTime(cloackedColor, normalColor, 0.5f));
+        yield return new WaitForSeconds(0.5f);
         isUsingItem = false;
     }
 

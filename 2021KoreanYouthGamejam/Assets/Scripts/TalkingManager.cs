@@ -57,7 +57,7 @@ public class TalkingManager : MonoBehaviour
             if (!dialogueImages.ContainsKey(element.name))
                 dialogueImages.Add(element.name, Resources.Load<Sprite>("Images/Chat/" + element.name));
 
-        player.dialogueActive = true; // 대화 진행중 상태로 변경
+        // player.dialogueActive = true; // 대화 진행중 상태로 변경
         panel.gameObject.SetActive(true);
         StopCoroutine(DisplayDialogue());
         StartCoroutine(DisplayDialogue()); // 대사 출력 시작
@@ -139,7 +139,7 @@ public class TalkingManager : MonoBehaviour
             {
                 player.targetNPC.posNum = 0;
                 player.targetNPC.txtNum = 0;
-                player.dialogueActive = false;
+                // player.dialogueActive = false;
                 firstDialogue = true;
                 charactersSpeaking = new List<string>();
                 charactersSpeaking.Add(string.Empty);
