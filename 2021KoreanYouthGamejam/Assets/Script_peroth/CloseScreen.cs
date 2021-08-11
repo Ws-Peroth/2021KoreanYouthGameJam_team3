@@ -1,15 +1,20 @@
 using UnityEngine;
 
-public class CloseScreen : MonoBehaviour
+namespace peroth
 {
-    private void Update()
+    public class CloseScreen : MonoBehaviour
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-            gameObject.SetActive(false);
-    }
+        public virtual void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Escape)) 
+                CloseButtonDown();
+        }
 
-    public void CloseButtonDown()
-    {
-        gameObject.SetActive(false);
-    }
+        public void CloseButtonDown()
+        {
+            MenuTabManager.instance.isPopup = false;
+            gameObject.SetActive(false);
+            Debug.Log("CloseScreem.cs : CloseButtonDown");
+        }
+    }   
 }
