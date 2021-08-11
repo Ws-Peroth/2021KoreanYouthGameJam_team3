@@ -6,7 +6,7 @@ namespace peroth
     {
         public virtual void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Escape)) 
+            if (Input.GetKeyDown(KeyCode.Escape))
                 CloseButtonDown();
         }
 
@@ -16,5 +16,5 @@ namespace peroth
             gameObject.SetActive(false);
             Debug.Log("CloseScreem.cs : CloseButtonDown");
         }
-    }   
+    }
 }

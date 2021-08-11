@@ -159,7 +159,7 @@ public class TalkingManager : MonoBehaviour
     private void SetDisplayedCharacters()
     {
         if (charactersSpeaking.Contains(player.dialogues.elements[player.targetNPC.posNum].name)) return;
-        
+
         if (charactersSpeaking.Contains(player.dialogues.elements[player.targetNPC.posNum + 1].name))
         {
             var pos = charactersSpeaking.IndexOf(player.dialogues.elements[player.targetNPC.posNum + 1].name);

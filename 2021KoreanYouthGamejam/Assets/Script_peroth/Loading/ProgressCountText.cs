@@ -1,13 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine.UI;
 using UnityEngine;
+using UnityEngine.UI;
 
-namespace peroth {
+namespace peroth
+{
     public class ProgressCountText : MonoBehaviour
     {
-        [SerializeField] Text text;
-        void Update()
+        [SerializeField] private Text text;
+
+        private void Update()
         {
             text.text = $"{Mathf.Ceil(100 * SceneLoadManager.instance.progressBarFillAmount)}%";
         }

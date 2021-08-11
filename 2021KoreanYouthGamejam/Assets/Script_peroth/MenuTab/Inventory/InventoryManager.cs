@@ -8,34 +8,34 @@ namespace peroth
 {
     public class InventoryManager : Singleton<InventoryManager>
     {
-        private readonly string itemInventoryfilePath = "./Assets/ItemInventory.json";
-        private readonly string itemInformationfilePath = "./Assets/ItemInformation.json";
-
-        private List<ItemIcon> itemIconList = new List<ItemIcon>();
         public List<Sprite> imageList = new List<Sprite>();
 
         [SerializeField] private Transform iconTransform;
         [SerializeField] private Text itemInformationText;
         [SerializeField] private Text itemNameText;
         [SerializeField] private Image itemimage;
-
-        public ItemInformationList itemInformationList;
         public Transform selfTransform;
 
         public bool isDebug;
+        private readonly string itemInformationfilePath = "./Assets/ItemInformation.json";
+        private readonly string itemInventoryfilePath = "./Assets/ItemInventory.json";
+
+        private readonly List<ItemIcon> itemIconList = new List<ItemIcon>();
+
+        public ItemInformationList itemInformationList;
 
         private void Start()
         {
             itemInformationText.text = "";
             itemNameText.text = "";
 
-            // ÆÄÀÏ ÃÊ±âÈ­
-            if (!File.Exists(itemInformationfilePath)) Debug.LogError("ÃÊ±âÈ­ ÆÄÀÏÀÌ Á¸ÀçÇÏÁö ¾ÊÀ½");
+            // íŒŒì¼ ì´ˆê¸°í™”
+            if (!File.Exists(itemInformationfilePath)) Debug.LogError("ì´ˆê¸°í™” íŒŒì¼ì´ ì¡´ì¬í•˜ì§€ ì•ŠìŒ");
             if (!File.Exists(itemInventoryfilePath)) InitializeInventoryJsonFile();
 
             UpdateInventory();
 
-            // Json¿¡ ÀúÀåµÇ¾î ÀÖ´Â ¾ÆÀÌÅÛÀÇ »óÅÂ·Î ÃÊ±âÈ­
+            // Jsonì— ì €ì¥ë˜ì–´ ìˆëŠ” ì•„ì´í…œì˜ ìƒíƒœë¡œ ì´ˆê¸°í™”
             CreatIcon();
 
             Debug.Log("StartManager");
@@ -46,7 +46,7 @@ namespace peroth
             var loadJson = File.ReadAllText(itemInformationfilePath);
             var tempList = JsonConvert.DeserializeObject<ItemInformationList>(loadJson);
 
-            string json = JsonConvert.SerializeObject(tempList, Formatting.Indented);
+            var json = JsonConvert.SerializeObject(tempList, Formatting.Indented);
             File.WriteAllText(itemInventoryfilePath, json);
         }
 
@@ -55,7 +55,7 @@ namespace peroth
             var loadJson = File.ReadAllText(itemInformationfilePath);
             var tempList = JsonConvert.DeserializeObject<ItemInformationList>(loadJson);
 
-            string json = JsonConvert.SerializeObject(tempList, Formatting.Indented);
+            var json = JsonConvert.SerializeObject(tempList, Formatting.Indented);
             itemInformationList = JsonConvert.DeserializeObject<ItemInformationList>(loadJson);
             File.WriteAllText(itemInventoryfilePath, json);
         }
@@ -72,7 +72,7 @@ namespace peroth
 
         public void SaveItem()
         {
-            string json = JsonConvert.SerializeObject(itemInformationList, Formatting.Indented);
+            var json = JsonConvert.SerializeObject(itemInformationList, Formatting.Indented);
             File.WriteAllText(itemInventoryfilePath, json);
         }
 
@@ -86,48 +86,42 @@ namespace peroth
         {
             ClearBeforeIcons();
 
-            if(isDebug) UpdateInventory();
+            if (isDebug) UpdateInventory();
 
-            int haveingCount = 0;
+            var haveingCount = 0;
             GameObject icon;
 
-            // ÇöÀç º¸À¯ »óÅÂ¿¡ µû¸¥ ¾ÆÀÌÄÜ »ı¼º
+            // í˜„ì¬ ë³´ìœ  ìƒíƒœì— ë”°ë¥¸ ì•„ì´ì½˜ ìƒì„±
             for (var i = 0; i < itemInformationList.list.Count; i++)
+            for (var j = 0; j < itemInformationList.list[i].havingCount; j++)
             {
-                for (var j = 0; j < itemInformationList.list[i].havingCount; j++)
-                {
-                    icon = ItemIconPoolManager.instance.CreatItemIcon();
-                    InitializeIcon(icon, itemInformationList.list[i].itemCode);
-                    haveingCount++;
-                }
+                icon = ItemIconPoolManager.instance.CreatItemIcon();
+                InitializeIcon(icon, itemInformationList.list[i].itemCode);
+                haveingCount++;
             }
 
-            // ±âº» 8Ä­ »ı¼º : 8 - ÃÑ »ı¼ºÇÑ ¾ÆÀÌÄÜ ¼ö
+            // ê¸°ë³¸ 8ì¹¸ ìƒì„± : 8 - ì´ ìƒì„±í•œ ì•„ì´ì½˜ ìˆ˜
             if (haveingCount < 8)
-            {
                 for (var i = haveingCount; i < 8; i++)
                 {
                     icon = ItemIconPoolManager.instance.CreatItemIcon();
                     InitializeIcon(icon, ItemCodeEnumToInt(ItemCode.BlankItem));
                     haveingCount++;
                 }
-            }
         }
 
         private void ClearBeforeIcons()
         {
-            for(int i = 0; i < itemIconList.Count; i++)
-            {
+            for (var i = 0; i < itemIconList.Count; i++)
                 if (itemIconList[i].selfGameObject.activeSelf)
                     itemIconList[i].DestroyIcon();
-            }
         }
 
         private void InitializeIcon(GameObject icon, int itemCode)
         {
             icon.transform.SetParent(iconTransform);
             icon.transform.localScale = Vector3.one;
-            ItemIcon tempIcon = icon.GetComponent<ItemIcon>();
+            var tempIcon = icon.GetComponent<ItemIcon>();
             tempIcon.itemCode = itemCode;
             itemIconList.Add(tempIcon);
             icon.GetComponent<Image>().sprite = imageList[itemCode];
@@ -144,8 +138,10 @@ namespace peroth
         }
 
         #region EnumConversion
-        public int ItemCodeEnumToInt(ItemCode itemCode) =>
-            itemCode switch
+
+        public int ItemCodeEnumToInt(ItemCode itemCode)
+        {
+            return itemCode switch
             {
                 ItemCode.ItemA => 1,
                 ItemCode.ItemB => 2,
@@ -155,11 +151,13 @@ namespace peroth
                 ItemCode.ItemF => 6,
                 ItemCode.ItemG => 7,
                 ItemCode.ItemH => 8,
-                _ => 0,
+                _ => 0
             };
+        }
 
-        public ItemCode IntToItemCodeEnum(int itemCode) =>
-            itemCode switch
+        public ItemCode IntToItemCodeEnum(int itemCode)
+        {
+            return itemCode switch
             {
                 1 => ItemCode.ItemA,
                 2 => ItemCode.ItemB,
@@ -169,8 +167,10 @@ namespace peroth
                 6 => ItemCode.ItemF,
                 7 => ItemCode.ItemG,
                 8 => ItemCode.ItemH,
-                _ => 0,
+                _ => 0
             };
+        }
+
         #endregion
     }
 

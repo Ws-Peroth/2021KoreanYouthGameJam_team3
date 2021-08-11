@@ -8,22 +8,18 @@ namespace peroth
         [SerializeField] private GameObject keySettingCanvas;
         [SerializeField] private GameObject dialogueLogCanvas;
         [SerializeField] private GameObject menuTab;
-       
 
-        public bool isPopup = false;
+
+        public bool isPopup;
 
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.Tab) && !isPopup)
-            {   
+            {
                 if (menuTab.activeSelf)
-                {
                     CloseButtonDown();
-                }
                 else
-                {
                     ThisTabOpen();
-                }
             }
         }
 
@@ -67,7 +63,7 @@ namespace peroth
         public void SaveAndQuitButtonDown()
         {
             // TODO : SAVE 기능 구현
-            
+
             Application.Quit();
         }
     }

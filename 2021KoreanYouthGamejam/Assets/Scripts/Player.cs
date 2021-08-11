@@ -8,11 +8,6 @@ public class Player : MonoBehaviour
 {
     [HideInInspector] public bool isDetected;
 
-    private Rigidbody2D rb;
-
-    private Animator anim;
-    private List<SpriteRenderer> srList = new List<SpriteRenderer>();
-
     [SerializeField] private Vector2 isGroundCheckCirclePos;
 
     [SerializeField] private int speed = 3;
@@ -20,22 +15,27 @@ public class Player : MonoBehaviour
 
     [HideInInspector] public NPC targetNPC;
 
-    private TextAsset jsonText;
-
     [HideInInspector] public DialogueElements dialogues; // 대화 저장소
-
-    private TalkingManager manager;
     [HideInInspector] public bool isUsingItem;
-
-    private CCTVEnemy targetCCTV;
-    private bool manipulatingCam;
     private readonly Color cloackedColor = new Color(1f, 1f, 1f, 0.3f);
 
     private readonly Color normalColor = new Color(1f, 1f, 1f, 1f);
-    
+
+    private Animator anim;
+
     private bool isGround;
+
+    private TextAsset jsonText;
+
+    private TalkingManager manager;
+    private bool manipulatingCam;
     private bool moving;
+
+    private Rigidbody2D rb;
     private bool running;
+    private List<SpriteRenderer> srList = new List<SpriteRenderer>();
+
+    private CCTVEnemy targetCCTV;
     private List<CCTVEnemy> visibleCCTVList = new List<CCTVEnemy>();
 
     private void Start()
@@ -51,6 +51,12 @@ public class Player : MonoBehaviour
         Movement();
 
         UseItem();
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(isGroundCheckCirclePos, 0.07f);
     }
 
     private void UseItem()
@@ -105,15 +111,13 @@ public class Player : MonoBehaviour
         if (cctvList.Count <= 0) return true;
 
         foreach (var t in cctvList)
-        {
             if (Camera.main is { })
             {
                 var worldPos = Camera.main.WorldToViewportPoint(t.transform.position);
-                Debug.Log(t.gameObject.name +  worldPos);
+                Debug.Log(t.gameObject.name + worldPos);
                 if (PositionCheck(worldPos.x) && PositionCheck(worldPos.y) && worldPos.z > 0)
                     visibleCCTVList.Add(t);
             }
-        }
 
         Debug.Log(visibleCCTVList.Count);
 
@@ -216,15 +220,9 @@ public class Player : MonoBehaviour
 
     private void CloakCape()
     {
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            StartCoroutine(Cloak());
-        }
+        if (Input.GetKeyDown(KeyCode.W)) StartCoroutine(Cloak());
 
-        if (Input.GetKeyUp(KeyCode.W))
-        {
-            StartCoroutine(Uncloak());
-        }
+        if (Input.GetKeyUp(KeyCode.W)) StartCoroutine(Uncloak());
     }
 
     private void Movement()
@@ -244,11 +242,8 @@ public class Player : MonoBehaviour
                 axis = -1f;
             else if (Input.GetKey(KeyCode.RightArrow))
                 axis = 1f;
-            else if (Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.RightArrow))
-            {
-                axis = 0f;
-            }
-            
+            else if (Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.RightArrow)) axis = 0f;
+
             // 플레이어 X축 전환
             if (axis != 0)
             {
@@ -290,16 +285,10 @@ public class Player : MonoBehaviour
             anim.SetBool("walk", moving);
             anim.SetBool("run", false);
         }
-        
+
         anim.SetBool("idle", !moving);
 
         #endregion
-    }
-
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(isGroundCheckCirclePos, 0.07f);
     }
 
     private bool PositionCheck(float position)

@@ -2,7 +2,6 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-
 namespace peroth
 {
     public enum Scenes
@@ -14,10 +13,13 @@ namespace peroth
 
     public class SceneLoadManager : Singleton<SceneLoadManager>
     {
-        public float progressBarFillAmount;
         public static Scenes nextScene;
+        public float progressBarFillAmount;
 
-        private void Start() => DontDestroyOnLoad(gameObject);
+        private void Start()
+        {
+            DontDestroyOnLoad(gameObject);
+        }
 
         public void SceneChange(Scenes nextSceneEnum)
         {
@@ -26,17 +28,16 @@ namespace peroth
             StartCoroutine(LoadScene());
         }
 
-        IEnumerator LoadScene()
+        private IEnumerator LoadScene()
         {
             yield return null;
 
-            AsyncOperation op = SceneManager.LoadSceneAsync(ScenesEnumToInt(nextScene));
+            var op = SceneManager.LoadSceneAsync(ScenesEnumToInt(nextScene));
             op.allowSceneActivation = false;
 
-            float timer = 0.0f;
+            var timer = 0.0f;
             while (!op.isDone)
             {
-
                 yield return null;
 
                 Debug.Log(progressBarFillAmount);
@@ -46,10 +47,7 @@ namespace peroth
                 {
                     progressBarFillAmount = Mathf.Lerp(progressBarFillAmount, op.progress, timer);
 
-                    if (progressBarFillAmount >= op.progress)
-                    {
-                        timer = 0f;
-                    }
+                    if (progressBarFillAmount >= op.progress) timer = 0f;
                 }
                 else
                 {
@@ -65,13 +63,15 @@ namespace peroth
             }
         }
 
-        public int ScenesEnumToInt(Scenes scene) => scene switch
+        public int ScenesEnumToInt(Scenes scene)
         {
-            Scenes.Openning => 0,
-            Scenes.Main => 1,
-            Scenes.Loading => (int) Scenes.Loading,
-            _ => -1
-        };
-
+            return scene switch
+            {
+                Scenes.Openning => 0,
+                Scenes.Main => 1,
+                Scenes.Loading => (int) Scenes.Loading,
+                _ => -1
+            };
+        }
     }
 }

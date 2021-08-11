@@ -1,8 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-namespace peroth {
+namespace peroth
+{
     public class PopupScreen : CloseScreen
     {
         public override void Update()

@@ -1,15 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine.UI;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace peroth
 {
     public class loadingBar : MonoBehaviour
     {
-        [SerializeField] Slider slider;
+        [SerializeField] private Slider slider;
+
         // Update is called once per frame
-        void Update()
+        private void Update()
         {
             slider.value = SceneLoadManager.instance.progressBarFillAmount;
         }
