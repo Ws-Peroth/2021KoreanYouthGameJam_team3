@@ -11,6 +11,7 @@ namespace peroth {
             {
                 MenuTabManager.instance.isPopup = false;
                 gameObject.SetActive(false);
+                Debug.Log("PopupScreen.cs : Update");
             }
         }
     }

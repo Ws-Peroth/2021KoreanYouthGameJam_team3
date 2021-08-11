@@ -20,6 +20,9 @@ namespace peroth
         [SerializeField] private Image itemimage;
 
         public ItemInformationList itemInformationList;
+        public Transform selfTransform;
+
+        public bool isDebug;
 
         private void Start()
         {
@@ -30,11 +33,12 @@ namespace peroth
             if (!File.Exists(itemInformationfilePath)) Debug.LogError("초기화 파일이 존재하지 않음");
             if (!File.Exists(itemInventoryfilePath)) InitializeInventoryJsonFile();
 
-            var loadJson = File.ReadAllText(itemInventoryfilePath);
-            itemInformationList = JsonConvert.DeserializeObject<ItemInformationList>(loadJson);
+            UpdateInventory();
 
             // Json에 저장되어 있는 아이템의 상태로 초기화
             CreatIcon();
+
+            Debug.Log("StartManager");
         }
 
         private void InitializeInventoryJsonFile()
@@ -72,9 +76,17 @@ namespace peroth
             File.WriteAllText(itemInventoryfilePath, json);
         }
 
+        public void UpdateInventory()
+        {
+            var loadJson = File.ReadAllText(itemInventoryfilePath);
+            itemInformationList = JsonConvert.DeserializeObject<ItemInformationList>(loadJson);
+        }
+
         public void CreatIcon()
         {
             ClearBeforeIcons();
+
+            if(isDebug) UpdateInventory();
 
             int haveingCount = 0;
             GameObject icon;
@@ -106,14 +118,8 @@ namespace peroth
         {
             for(int i = 0; i < itemIconList.Count; i++)
             {
-                if (itemIconList[i].gameObject.activeSelf)
+                if (itemIconList[i].selfGameObject.activeSelf)
                     itemIconList[i].DestroyIcon();
-                else
-                {
-                    itemIconList[i].transform.SetParent(itemIconList[i].destroyTransform);
-                    ItemIconPoolManager.instance.DestroyItemIcon(gameObject);
-                }
-
             }
         }
 

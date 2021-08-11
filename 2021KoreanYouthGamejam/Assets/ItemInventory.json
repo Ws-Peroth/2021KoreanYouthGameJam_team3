@@ -8,32 +8,32 @@
     },
     {
       "name": "ItemA",
-      "information": "",
-      "havingCount": 0,
+      "information": "sdf\nsdf",
+      "havingCount": 1,
       "itemCode": 1
     },
     {
       "name": "ItemB",
       "information": "",
-      "havingCount": 0,
+      "havingCount": 1,
       "itemCode": 2
     },
     {
       "name": "ItemC",
       "information": "",
-      "havingCount": 0,
+      "havingCount": 1,
       "itemCode": 3
     },
     {
       "name": "ItemD",
       "information": "",
-      "havingCount": 0,
+      "havingCount": 1,
       "itemCode": 4
     },
     {
       "name": "ItemE",
       "information": "",
-      "havingCount": 0,
+      "havingCount": 1,
       "itemCode": 5
     },
     {

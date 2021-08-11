@@ -14,6 +14,7 @@ namespace peroth
         {
             MenuTabManager.instance.isPopup = false;
             gameObject.SetActive(false);
+            Debug.Log("CloseScreem.cs : CloseButtonDown");
         }
-    }
+    }   
 }

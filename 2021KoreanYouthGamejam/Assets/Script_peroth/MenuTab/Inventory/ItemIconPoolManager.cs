@@ -23,6 +23,7 @@ namespace peroth
         public void DestroyItemIcon(GameObject obj)
         {
             obj.SetActive(false);
+            Debug.Log("ItemIconPoolManager : DestroyItemIcon");
             itemIconPool.Enqueue(obj);
         }
     }

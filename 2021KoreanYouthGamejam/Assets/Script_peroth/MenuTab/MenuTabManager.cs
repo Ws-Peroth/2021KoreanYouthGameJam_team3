@@ -15,18 +15,32 @@ namespace peroth
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.Tab) && !isPopup)
-                menuTab.SetActive(false);
+            {   
+                if (menuTab.activeSelf)
+                {
+                    CloseButtonDown();
+                }
+                else
+                {
+                    ThisTabOpen();
+                }
+            }
         }
 
         public void ThisTabOpen()
         {
             menuTab.SetActive(true);
             InventoryManager.instance.CreatIcon();
+            Debug.Log("TabOpen");
         }
 
         public void CloseButtonDown()
         {
-            menuTab.SetActive(false);
+            if (menuTab.activeSelf)
+            {
+                Debug.Log("Close ManuTab");
+                menuTab.SetActive(false);
+            }
         }
 
         public void OptionButtonDown()
@@ -50,6 +64,7 @@ namespace peroth
         public void SaveAndQuitButtonDown()
         {
             // TODO : SAVE 기능 구현
+            
             Application.Quit();
         }
     }
