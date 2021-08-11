@@ -8,25 +8,18 @@ namespace peroth
     public class LoadingText : MonoBehaviour
     {
         [SerializeField] private Text text;
-        bool isUp;
+        readonly private float changeDelay = 0.006f;
+        readonly private byte changeValue = 1;
+        private bool isUp;
 
-        [Range(0, 255)]
-        [SerializeField] private byte changeValue;
+
 
         // Start is called before the first frame update
         void Start()
         {
             isUp = false;
-            changeValue = 1;
             StartCoroutine(LoadingTextCoroutine());
-        }
-
-        void Update()
-        {
-            if (!isUp)
-                FadeOut();
-            else
-                FadeIn();
+            StartCoroutine(ChangeTextColorCoroutine());
         }
 
         IEnumerator LoadingTextCoroutine()
@@ -47,30 +40,41 @@ namespace peroth
             }
         }
 
-        void FadeIn()
+        IEnumerator ChangeTextColorCoroutine()
         {
-            Color32 color = text.color;
-            if (color.a <= 254)
-                color.a += changeValue;
-            else
-            {
-                color.a = 255;
-                isUp = false;
-            }
-            text.color = color;
-        }
+            Color32 color;
 
-        void FadeOut()
-        {
-            Color32 color = text.color;
-            if (color.a >= 1)
-                color.a -= changeValue;
-            else
+            while (true)
             {
-                color.a = 0;
-                isUp = true;
+                color = text.color;
+
+                if (!isUp)
+                {
+                    // FADE OUT
+                    if (color.a >= 1)
+                        color.a -= changeValue;
+                    else
+                    {
+                        color.a = 0;
+                        isUp = true;
+                    }
+                    text.color = color;
+                }
+                else
+                {
+                    // FADE IN
+                    if (color.a <= 254)
+                        color.a += changeValue;
+                    else
+                    {
+                        color.a = 255;
+                        isUp = false;
+                    }
+                    text.color = color;
+                }
+
+                yield return new WaitForSeconds(changeDelay);
             }
-            text.color = color;
         }
     }
 }

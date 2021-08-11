@@ -1,7 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 
@@ -10,19 +8,21 @@ namespace peroth
     public enum Scenes
     {
         Openning,
-        Main
+        Main,
+        Loading
     }
 
     public class SceneLoadManager : Singleton<SceneLoadManager>
     {
-        public static Scenes nextScene;
         public float progressBarFillAmount;
+        public static Scenes nextScene;
 
-        [SerializeField] private Image progressBar;
+        private void Start() => DontDestroyOnLoad(gameObject);
 
-        private void Start()
+        public void SceneChange(Scenes nextSceneEnum)
         {
-            DontDestroyOnLoad(gameObject);
+            nextScene = nextSceneEnum;
+            SceneManager.LoadScene(ScenesEnumToInt(Scenes.Loading));
             StartCoroutine(LoadScene());
         }
 
@@ -38,6 +38,8 @@ namespace peroth
             {
 
                 yield return null;
+
+                Debug.Log(progressBarFillAmount);
 
                 timer += Time.deltaTime;
                 if (op.progress < 0.9f)
@@ -56,6 +58,7 @@ namespace peroth
                     if (progressBarFillAmount == 1.0f)
                     {
                         op.allowSceneActivation = true;
+                        yield return new WaitForSeconds(1f);
                         yield break;
                     }
                 }
@@ -66,6 +69,7 @@ namespace peroth
         {
             Scenes.Openning => 0,
             Scenes.Main => 1,
+            Scenes.Loading => (int) Scenes.Loading,
             _ => -1
         };
 
