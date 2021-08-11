@@ -107,7 +107,8 @@ public class Player : MonoBehaviour
         {
             if (Camera.main is { })
             {
-                var worldPos = Camera.main.ViewportToWorldPoint(t.transform.position);
+                var worldPos = Camera.main.WorldToViewportPoint(t.transform.position);
+                Debug.Log(t.gameObject.name +  worldPos);
                 if (PositionCheck(worldPos.x) && PositionCheck(worldPos.y) && worldPos.z > 0)
                     visibleCCTVList.Add(t);
             }
