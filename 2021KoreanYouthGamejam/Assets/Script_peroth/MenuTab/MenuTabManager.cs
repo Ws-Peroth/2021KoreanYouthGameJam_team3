@@ -6,32 +6,45 @@ namespace peroth
     {
         [SerializeField] private GameObject optionCanvas;
         [SerializeField] private GameObject keySettingCanvas;
-        [SerializeField] private GameObject DialogueLogCanvas;
+        [SerializeField] private GameObject dialogueLogCanvas;
+        [SerializeField] private GameObject menuTab;
+       
+
+        public bool isPopup = false;
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Tab))
-                gameObject.SetActive(false);
+            if (Input.GetKeyDown(KeyCode.Tab) && !isPopup)
+                menuTab.SetActive(false);
+        }
+
+        public void ThisTabOpen()
+        {
+            menuTab.SetActive(true);
+            InventoryManager.instance.CreatIcon();
         }
 
         public void CloseButtonDown()
         {
-            gameObject.SetActive(false);
+            menuTab.SetActive(false);
         }
 
         public void OptionButtonDown()
         {
+            isPopup = true;
             optionCanvas.SetActive(true);
         }
 
         public void KeySettingButtonDown()
         {
+            isPopup = true;
             keySettingCanvas.SetActive(true);
         }
 
         public void DialogueLogButtonDown()
         {
-            DialogueLogCanvas.SetActive(true);
+            isPopup = true;
+            dialogueLogCanvas.SetActive(true);
         }
 
         public void SaveAndQuitButtonDown()
