@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     [SerializeField] private int speed = 3;
     [SerializeField] private int runningSpeed = 5;
 
-    [HideInInspector] public NPC targetNPC;
+    public NPC targetNPC;
 
     [HideInInspector] public DialogueElements dialogues; // 대화 저장소
     [HideInInspector] public bool isUsingItem;
@@ -56,7 +56,7 @@ public class Player : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(isGroundCheckCirclePos, 0.07f);
+        Gizmos.DrawWireSphere( transform.position + (Vector3) isGroundCheckCirclePos, 0.07f);
     }
 
     private void UseItem()
@@ -343,6 +343,7 @@ public class Player : MonoBehaviour
     public void CheckInput()
     {
         if (manager.hidingUI) return;
+        if (MenuTabManager.instance.isMenuOn) return;
 
         if (Input.GetKeyDown(KeyCode.Space))
         {

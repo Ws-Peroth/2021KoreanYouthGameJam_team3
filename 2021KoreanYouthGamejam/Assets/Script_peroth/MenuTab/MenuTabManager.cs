@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace peroth
@@ -8,6 +9,7 @@ namespace peroth
         [SerializeField] private GameObject keySettingCanvas;
         [SerializeField] private GameObject dialogueLogCanvas;
         [SerializeField] private GameObject menuTab;
+        [HideInInspector] public bool isMenuOn;
 
 
         public bool isPopup;
@@ -25,6 +27,7 @@ namespace peroth
 
         public void ThisTabOpen()
         {
+            isMenuOn = true;
             Time.timeScale = 0;
 
             menuTab.SetActive(true);
@@ -36,6 +39,7 @@ namespace peroth
         {
             if (menuTab.activeSelf)
             {
+                isMenuOn = false;
                 Time.timeScale = 1;
                 Debug.Log("Close ManuTab");
                 menuTab.SetActive(false);

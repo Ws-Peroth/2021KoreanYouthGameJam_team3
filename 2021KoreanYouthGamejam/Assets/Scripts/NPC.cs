@@ -10,7 +10,7 @@ public class NPC : MonoBehaviour
 
     [HideInInspector] public int txtNum; // 대화 진행도
 
-    public Player player;
+    private Player player;
     public float radius = 2f;
 
     private void Start()

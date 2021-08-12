@@ -20,7 +20,7 @@ public class TalkingManager : MonoBehaviour
     public bool isDisplayingDialogue;
     public bool instantComplete;
     public bool hidingUI;
-    public bool firstDialogue = true;
+    private bool firstDialogue = true;
 
     private readonly Dictionary<string, Sprite> dialogueImages = new Dictionary<string, Sprite>();
 
