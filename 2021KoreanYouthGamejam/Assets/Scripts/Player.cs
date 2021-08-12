@@ -159,8 +159,6 @@ public class Player : MonoBehaviour
     {
         #region 아이템 사용
 
-        if (isUsingItem) return;
-
         // 광학 미채 망토
         CloakCape();
 
@@ -174,17 +172,19 @@ public class Player : MonoBehaviour
     private IEnumerator Cloak()
     {
         isUsingItem = true;
-        StartCoroutine(ChangeColorOverTime(normalColor, cloackedColor, 0.5f));
-        yield return new WaitForSeconds(0.5f);
+        StartCoroutine(ChangeColorOverTime(normalColor, cloackedColor, 0.2f));
+        // yield return new WaitForSeconds(0.2f);
         isCloaked = true;
+        yield return null;
     }
 
     private IEnumerator Uncloak()
     {
         isCloaked = false;
-        StartCoroutine(ChangeColorOverTime(cloackedColor, normalColor, 0.5f));
-        yield return new WaitForSeconds(0.5f);
+        StartCoroutine(ChangeColorOverTime(cloackedColor, normalColor, 0.2f));
+        // yield return new WaitForSeconds(0.2f);
         isUsingItem = false;
+        yield return null;
     }
 
     private void SelectCCTV(CCTVEnemy tempCCTV, Vector2 pos)
@@ -261,8 +261,7 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyUp(KeyCode.W)) StartCoroutine(Uncloak());
     }
-
-
+    
     private void UpdateCCTV(CCTVEnemy temp)
     {
         if (temp != null) targetCCTV = temp;
