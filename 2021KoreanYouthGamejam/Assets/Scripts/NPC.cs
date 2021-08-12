@@ -9,9 +9,9 @@ public class NPC : MonoBehaviour
     public int posNum; // 씬 진행도 (에디터 상에서 편집)
 
     [HideInInspector] public int txtNum; // 대화 진행도
+    public float radius = 2f;
 
     private Player player;
-    public float radius = 2f;
 
     private void Start()
     {

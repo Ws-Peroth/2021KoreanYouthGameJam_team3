@@ -1,10 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using peroth;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TalkingManager : MonoBehaviour
+public class TalkingManager : Singleton<TalkingManager>
 {
     public Player player;
 
@@ -20,11 +21,11 @@ public class TalkingManager : MonoBehaviour
     public bool isDisplayingDialogue;
     public bool instantComplete;
     public bool hidingUI;
-    private bool firstDialogue = true;
 
     private readonly Dictionary<string, Sprite> dialogueImages = new Dictionary<string, Sprite>();
 
     private string dialogueType = "conversation";
+    private bool firstDialogue = true;
 
     private void Start()
     {
