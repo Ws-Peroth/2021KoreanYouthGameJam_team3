@@ -17,6 +17,7 @@ public class TalkingManager : Singleton<TalkingManager>
     public Image eventIllustration;
     public RectTransform dialoguePanel;
     public List<string> charactersSpeaking = new List<string>();
+    public ConversationLog conversationLog;
 
     public bool isDisplayingDialogue;
     public bool instantComplete;
@@ -122,6 +123,7 @@ public class TalkingManager : Singleton<TalkingManager>
         }
 
         textTxt.text = player.dialogues.elements[player.targetNPC.posNum].txt[player.targetNPC.txtNum];
+        conversationLog.AddDialogue(player.dialogues.elements[player.targetNPC.posNum].name, player.dialogues.elements[player.targetNPC.posNum].txt[player.targetNPC.txtNum]);
         isDisplayingDialogue = false;
         instantComplete = false;
     }
