@@ -46,7 +46,6 @@ namespace peroth
             #endregion
         }
 
-#if UNITY_EDITOR
         private void OnDrawGizmos()
         {
             #region DrawDetectRange
@@ -59,7 +58,6 @@ namespace peroth
 
             #endregion
         }
-#endif
 
         public IEnumerator EnemyMove()
         {
