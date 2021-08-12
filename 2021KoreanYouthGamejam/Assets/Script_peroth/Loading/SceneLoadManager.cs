@@ -30,7 +30,7 @@ namespace peroth
 
         private IEnumerator LoadScene()
         {
-            yield return null;
+            yield return new WaitForSeconds(1);
 
             var op = SceneManager.LoadSceneAsync(ScenesEnumToInt(nextScene));
             op.allowSceneActivation = false;
@@ -56,7 +56,7 @@ namespace peroth
                     if (progressBarFillAmount == 1.0f)
                     {
                         op.allowSceneActivation = true;
-                        yield return new WaitForSeconds(1f);
+                        yield return new WaitForSeconds(2f);
                         yield break;
                     }
                 }

@@ -63,8 +63,8 @@ namespace peroth
         public void SaveAndQuitButtonDown()
         {
             // TODO : SAVE 기능 구현
-
-            Application.Quit();
+            // Application.Quit();
+            SceneLoadManager.instance.SceneChange(Scenes.Openning);
         }
     }
 }
