@@ -11,26 +11,23 @@ namespace peroth
         Loading
     }
 
-    public class SceneLoadManager : Singleton<SceneLoadManager>
+    public class SceneLoadManager : SingletonDontDestroy<SceneLoadManager>
     {
         public static Scenes nextScene;
         public float progressBarFillAmount;
-
-        private void Start()
-        {
-            DontDestroyOnLoad(gameObject);
-        }
 
         public void SceneChange(Scenes nextSceneEnum)
         {
             nextScene = nextSceneEnum;
             SceneManager.LoadScene(ScenesEnumToInt(Scenes.Loading));
+
+            Debug.Log("Loading Scene Load Finish");
             StartCoroutine(LoadScene());
         }
 
         private IEnumerator LoadScene()
         {
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(1f);
 
             var op = SceneManager.LoadSceneAsync(ScenesEnumToInt(nextScene));
             op.allowSceneActivation = false;
@@ -39,8 +36,6 @@ namespace peroth
             while (!op.isDone)
             {
                 yield return null;
-
-                Debug.Log(progressBarFillAmount);
 
                 timer += Time.deltaTime;
                 if (op.progress < 0.9f)
@@ -55,8 +50,9 @@ namespace peroth
 
                     if (progressBarFillAmount == 1.0f)
                     {
+                        yield return new WaitForSeconds(1f);
+                        progressBarFillAmount = 0;
                         op.allowSceneActivation = true;
-                        yield return new WaitForSeconds(2f);
                         yield break;
                     }
                 }

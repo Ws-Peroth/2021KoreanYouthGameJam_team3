@@ -64,6 +64,7 @@ namespace peroth
         {
             // TODO : SAVE 기능 구현
             // Application.Quit();
+            Time.timeScale = 1;
             SceneLoadManager.instance.SceneChange(Scenes.Openning);
         }
     }

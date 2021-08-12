@@ -17,8 +17,8 @@ namespace peroth
         public Transform selfTransform;
 
         public bool isDebug;
-        private readonly string itemInformationfilePath = "./Assets/ItemInformation.json";
-        private readonly string itemInventoryfilePath = "./Assets/ItemInventory.json";
+        private string itemInformationfilePath;
+        private string itemInventoryfilePath;
 
         private readonly List<ItemIcon> itemIconList = new List<ItemIcon>();
 
@@ -26,11 +26,14 @@ namespace peroth
 
         private void Start()
         {
+            itemInformationfilePath = $"{Application.persistentDataPath}/ItemInformation.json";
+            itemInventoryfilePath = $"{Application.persistentDataPath}/ItemInventory.json";
+
             itemInformationText.text = "";
             itemNameText.text = "";
 
             // 파일 초기화
-            if (!File.Exists(itemInformationfilePath)) Debug.LogError("초기화 파일이 존재하지 않음");
+            if (!File.Exists(itemInformationfilePath)) InitializeInformationJsonFile();
             if (!File.Exists(itemInventoryfilePath)) InitializeInventoryJsonFile();
 
             UpdateInventory();
@@ -39,6 +42,15 @@ namespace peroth
             CreatIcon();
 
             Debug.Log("StartManager");
+        }
+
+        private void InitializeInformationJsonFile()
+        {
+            var loadJson = Resources.Load("Information") as TextAsset;
+            var tempList = JsonConvert.DeserializeObject<ItemInformationList>(loadJson.ToString());
+
+            var json = JsonConvert.SerializeObject(tempList, Formatting.Indented);
+            File.WriteAllText(itemInformationfilePath, json);
         }
 
         private void InitializeInventoryJsonFile()

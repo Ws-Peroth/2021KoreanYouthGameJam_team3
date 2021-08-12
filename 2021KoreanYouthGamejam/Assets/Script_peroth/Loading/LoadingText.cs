@@ -13,7 +13,7 @@ namespace peroth
 
 
         // Start is called before the first frame update
-        private void Start()
+        void OnEnable()
         {
             isUp = false;
             StartCoroutine(LoadingTextCoroutine());

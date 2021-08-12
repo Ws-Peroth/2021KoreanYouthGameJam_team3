@@ -25,7 +25,6 @@ namespace peroth
             var destroyTransform = InventoryManager.instance.selfTransform;
             Debug.Log($"destroyTransform = {destroyTransform.name}\nnow Transform = {transform.parent.name}");
 
-            transform.parent = destroyTransform;
             transform.SetParent(destroyTransform);
 
             Debug.Log($"now Transform = {transform.parent.name}");
