@@ -35,6 +35,7 @@ public class Player : MonoBehaviour
     private bool running;
     private List<SpriteRenderer> srList = new List<SpriteRenderer>();
 
+    [SerializeField] private GameObject targetIndicator;
     private CCTVEnemy targetCCTV;
     private List<CCTVEnemy> visibleCCTVList = new List<CCTVEnemy>();
 
@@ -44,6 +45,11 @@ public class Player : MonoBehaviour
         srList = GetComponentsInChildren<SpriteRenderer>().ToList();
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+
+        if (targetIndicator == null)
+        {
+            targetIndicator = GameObject.Find("targetIndicator");
+        }
     }
 
     private void Update()
@@ -124,25 +130,14 @@ public class Player : MonoBehaviour
         if (visibleCCTVList.Count <= 0) return true;
         targetCCTV = visibleCCTVList[0];
 
-        var targetColor = targetCCTV.spriteRenderer.color;
-        foreach (var cctv in visibleCCTVList)
-        {
-            var cctvSR = cctv.spriteRenderer;
-            cctvSR.color = new Color(cctvSR.color.r, cctvSR.color.g, cctvSR.color.b, 0.3f);
-        }
-
-        targetCCTV.spriteRenderer.color = targetColor;
+        UpdateCCTV(null);
         return false;
     }
 
     private void TurnOffManipulator()
     {
         targetCCTV = null;
-        foreach (var cctv in visibleCCTVList)
-        {
-            var cctvSR = cctv.spriteRenderer;
-            cctvSR.color = new Color(cctvSR.color.r, cctvSR.color.g, cctvSR.color.b, 1f);
-        }
+        targetIndicator.SetActive(false);
     }
 
     private void SelectCCTV(CCTVEnemy tempCCTV, Vector2 pos)
@@ -206,13 +201,8 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             targetCCTV.StartCoroutine(targetCCTV.Neutralize());
+            targetIndicator.SetActive(false);
             manipulatingCam = false;
-            foreach (var cctv in visibleCCTVList)
-            {
-                var cctvSR = cctv.spriteRenderer;
-                cctvSR.color = new Color(cctvSR.color.r, cctvSR.color.g, cctvSR.color.b, 1f);
-            }
-
             isUsingItem = false;
             targetCCTV = null;
         }
@@ -299,15 +289,9 @@ public class Player : MonoBehaviour
     private void UpdateCCTV(CCTVEnemy temp)
     {
         if (temp != null) targetCCTV = temp;
-
-        var targetColor = targetCCTV.spriteRenderer.color;
-        foreach (var cctv in visibleCCTVList)
-        {
-            var cctvSR = cctv.spriteRenderer;
-            cctvSR.color = new Color(cctvSR.color.r, cctvSR.color.g, cctvSR.color.b, 0.3f);
-        }
-
-        targetCCTV.spriteRenderer.color = new Color(targetColor.r, targetColor.g, targetColor.b, 1f);
+        
+        targetIndicator.SetActive(true);
+        targetIndicator.transform.position = targetCCTV.transform.position;
     }
 
     private void FlipCharacter(float axis)

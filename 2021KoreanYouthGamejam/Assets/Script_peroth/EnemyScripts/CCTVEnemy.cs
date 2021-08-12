@@ -7,7 +7,6 @@ namespace peroth
     public class CCTVEnemy : PlayerDetect
     {
         public Transform target;
-        public Rigidbody2D gameObjectRigidbody;
         public SpriteRenderer spriteRenderer;
 
         public float delayTime = 0.1f;
