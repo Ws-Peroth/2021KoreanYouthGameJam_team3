@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
 
     [HideInInspector] public DialogueElements dialogues; // 대화 저장소
     [HideInInspector] public bool isUsingItem;
+    [HideInInspector] public bool isCloaked;
 
     [SerializeField] private GameObject targetIndicator;
     private readonly Color cloackedColor = new Color(1f, 1f, 1f, 0.3f);
@@ -175,10 +176,12 @@ public class Player : MonoBehaviour
         isUsingItem = true;
         StartCoroutine(ChangeColorOverTime(normalColor, cloackedColor, 0.5f));
         yield return new WaitForSeconds(0.5f);
+        isCloaked = true;
     }
 
     private IEnumerator Uncloak()
     {
+        isCloaked = false;
         StartCoroutine(ChangeColorOverTime(cloackedColor, normalColor, 0.5f));
         yield return new WaitForSeconds(0.5f);
         isUsingItem = false;

@@ -6,7 +6,7 @@ namespace peroth
     {
         public void PlayerDetected(Player player)
         {
-            if (player.isUsingItem) return;
+            if (player.isCloaked) return;
 
             player.isDetected = true;
             Debug.Log("GAME OVER");
