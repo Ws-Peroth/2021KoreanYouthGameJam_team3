@@ -16,9 +16,11 @@ public class TalkingManager : MonoBehaviour
     public Image eventIllustration;
     public RectTransform dialoguePanel;
     public List<string> charactersSpeaking = new List<string>();
+
     public bool isDisplayingDialogue;
     public bool instantComplete;
     public bool hidingUI;
+    private bool firstDialogue = true;
 
     private readonly Dictionary<string, Sprite> dialogueImages = new Dictionary<string, Sprite>();
 
@@ -40,6 +42,7 @@ public class TalkingManager : MonoBehaviour
                 hidingUI = true;
                 dialoguePanel.gameObject.SetActive(false);
             }
+
             if (Input.GetKeyUp(KeyCode.LeftShift))
             {
                 hidingUI = false;
@@ -54,7 +57,7 @@ public class TalkingManager : MonoBehaviour
             if (!dialogueImages.ContainsKey(element.name))
                 dialogueImages.Add(element.name, Resources.Load<Sprite>("Images/Chat/" + element.name));
 
-        player.dialogueActive = true; // 대화 진행중 상태로 변경
+        // player.dialogueActive = true; // 대화 진행중 상태로 변경
         panel.gameObject.SetActive(true);
         StopCoroutine(DisplayDialogue());
         StartCoroutine(DisplayDialogue()); // 대사 출력 시작
@@ -136,13 +139,18 @@ public class TalkingManager : MonoBehaviour
             {
                 player.targetNPC.posNum = 0;
                 player.targetNPC.txtNum = 0;
-                player.dialogueActive = false;
+                // player.dialogueActive = false;
+                firstDialogue = true;
+                charactersSpeaking = new List<string>();
+                charactersSpeaking.Add(string.Empty);
+                charactersSpeaking.Add(string.Empty);
                 panel.gameObject.SetActive(false); // 대화를 끝낸다
             }
             else // 대사의 end 값이 false 일때
             {
                 player.targetNPC.txtNum = 0;
-                player.targetNPC.posNum += 1;
+                if (!firstDialogue) player.targetNPC.posNum += 1;
+                if (player.targetNPC.posNum == 0) firstDialogue = false;
                 StartDialogue(); // 다음 대화를 시작한다
             }
         }
@@ -150,42 +158,48 @@ public class TalkingManager : MonoBehaviour
 
     private void SetDisplayedCharacters()
     {
-        if (charactersSpeaking.Contains(player.dialogues.elements[player.targetNPC.posNum].name))
+        if (charactersSpeaking.Contains(player.dialogues.elements[player.targetNPC.posNum].name)) return;
+
+        if (charactersSpeaking.Contains(player.dialogues.elements[player.targetNPC.posNum + 1].name))
         {
+            var pos = charactersSpeaking.IndexOf(player.dialogues.elements[player.targetNPC.posNum + 1].name);
+            switch (pos)
+            {
+                case 0:
+                    charactersSpeaking[1] = player.dialogues.elements[player.targetNPC.posNum].name;
+                    break;
+                case 1:
+                    charactersSpeaking[0] = player.dialogues.elements[player.targetNPC.posNum].name;
+                    break;
+                default:
+                    charactersSpeaking[0] = player.dialogues.elements[player.targetNPC.posNum].name;
+                    break;
+            }
         }
         else
         {
-            if (charactersSpeaking.Contains(player.dialogues.elements[player.targetNPC.posNum + 1].name))
+            int pos;
+
+            try
             {
-                var pos = charactersSpeaking.IndexOf(player.dialogues.elements[player.targetNPC.posNum + 1].name);
-                switch (pos)
-                {
-                    case 0:
-                        charactersSpeaking[1] = player.dialogues.elements[player.targetNPC.posNum].name;
-                        break;
-                    case 1:
-                        charactersSpeaking[0] = player.dialogues.elements[player.targetNPC.posNum].name;
-                        break;
-                    default:
-                        charactersSpeaking[0] = player.dialogues.elements[player.targetNPC.posNum].name;
-                        break;
-                }
+                pos = charactersSpeaking.IndexOf(player.dialogues.elements[player.targetNPC.posNum - 1].name);
             }
-            else
+            catch (Exception e)
             {
-                var pos = charactersSpeaking.IndexOf(player.dialogues.elements[player.targetNPC.posNum - 1].name);
-                switch (pos)
-                {
-                    case 0:
-                        charactersSpeaking[1] = player.dialogues.elements[player.targetNPC.posNum].name;
-                        break;
-                    case 1:
-                        charactersSpeaking[0] = player.dialogues.elements[player.targetNPC.posNum].name;
-                        break;
-                    default:
-                        charactersSpeaking[0] = player.dialogues.elements[player.targetNPC.posNum].name;
-                        break;
-                }
+                pos = 1;
+            }
+
+            switch (pos)
+            {
+                case 0:
+                    charactersSpeaking[1] = player.dialogues.elements[player.targetNPC.posNum].name;
+                    break;
+                case 1:
+                    charactersSpeaking[0] = player.dialogues.elements[player.targetNPC.posNum].name;
+                    break;
+                default:
+                    charactersSpeaking[0] = player.dialogues.elements[player.targetNPC.posNum].name;
+                    break;
             }
         }
     }
