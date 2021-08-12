@@ -222,7 +222,6 @@ MonoBehaviour:
   voice: {fileID: 0}
   posNum: 0
   txtNum: 0
-  player: {fileID: 0}
   radius: 2
 --- !u!1 &57454095
 GameObject:
@@ -266,7 +265,6 @@ MonoBehaviour:
   isDisplayingDialogue: 0
   instantComplete: 0
   hidingUI: 0
-  firstDialogue: 1
 --- !u!4 &57454097
 Transform:
   m_ObjectHideFlags: 0
@@ -730,20 +728,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDetected: 0
-  rb: {fileID: 474967613}
-  srList: []
-  isGroundCheckCirclePos: 0
+  isGroundCheckCirclePos: {x: 0, y: 0}
   speed: 5
+  runningSpeed: 5
   targetNPC: {fileID: 0}
-  dialogueActive: 0
-  jsonText: {fileID: 0}
-  path: 
   dialogues:
     elements: []
-  manager: {fileID: 0}
   isUsingItem: 0
-  targetCCTV: {fileID: 0}
-  manipulatingCam: 0
 --- !u!212 &474967610
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -858,6 +849,7 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
+  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -964,6 +956,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &519420033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0b0dd300770e1f4fa39738c3fd2eb7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &537453866
 GameObject:
   m_ObjectHideFlags: 0
