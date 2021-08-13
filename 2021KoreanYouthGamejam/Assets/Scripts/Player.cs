@@ -60,6 +60,8 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        if (MenuTabManager.instance.isMenuOn) return;
+        
         Movement();
 
         UseItem();

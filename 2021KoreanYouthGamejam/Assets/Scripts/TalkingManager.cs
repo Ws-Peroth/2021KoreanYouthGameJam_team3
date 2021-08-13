@@ -16,7 +16,7 @@ public class TalkingManager : Singleton<TalkingManager>
     public Image leftImage;
     public Image eventIllustration;
     public RectTransform dialoguePanel;
-    public List<string> charactersSpeaking = new List<string>();
+    public List<string> charactersSpeaking;
     public ConversationLog conversationLog;
 
     public bool isDisplayingDialogue;
@@ -30,6 +30,7 @@ public class TalkingManager : Singleton<TalkingManager>
 
     private void Start()
     {
+        charactersSpeaking = new List<string>();
         charactersSpeaking.Add(string.Empty);
         charactersSpeaking.Add(string.Empty);
         player = FindObjectOfType<Player>();
