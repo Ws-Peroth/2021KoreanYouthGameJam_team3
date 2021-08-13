@@ -174,6 +174,11 @@ public class Player : MonoBehaviour
         #region 아이템 사용
 
         if (!isGround) return;
+        
+        if (TalkingManager.instance.isTalking)
+        {
+            return;
+        }
 
         if (InventoryManager.instance.GetItemHavingCount(ItemCode.ItemA) <= 1)
         {

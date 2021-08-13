@@ -134,6 +134,10 @@ public class TalkingManager : Singleton<TalkingManager>
 
     public void NextDialogue() // 다음으로 넘어가기
     {
+        if (player.isUsingItem)
+        {
+            return;
+        }
         isTalking = true;
         if (player.targetNPC.txtNum != player.dialogues.elements[player.targetNPC.posNum].txt.Length - 1) // 대사가 남아 있을 때
         {
