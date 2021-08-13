@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
 {
     #region Variables
 
-    [HideInInspector] public bool isDetected;
+     public bool isDetected;
 
     [SerializeField] private Vector2 isGroundCheckCirclePos;
 
@@ -28,7 +28,7 @@ public class Player : MonoBehaviour
 
     private Animator anim;
 
-    private bool isGround;
+    [SerializeField] private bool isGround;
 
     private TextAsset jsonText;
 
@@ -40,6 +40,7 @@ public class Player : MonoBehaviour
     private List<SpriteRenderer> srList = new List<SpriteRenderer>();
     private CCTVEnemy targetCCTV;
     private List<CCTVEnemy> visibleCCTVList = new List<CCTVEnemy>();
+    private List<CCTVEnemy> cctvList;
 
     #endregion
 
@@ -50,6 +51,7 @@ public class Player : MonoBehaviour
         srList = GetComponentsInChildren<SpriteRenderer>().ToList();
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        cctvList = FindObjectsOfType<CCTVEnemy>().ToList();
 
         manipulatingCam = false;
         isUsingItem = false;
@@ -180,6 +182,7 @@ public class Player : MonoBehaviour
     private IEnumerator Cloak()
     {
         isUsingItem = true;
+        rb.velocity = Vector2.zero;
         StartCoroutine(ChangeColorOverTime(normalColor, cloackedColor, 0.2f));
         // yield return new WaitForSeconds(0.2f);
         isCloaked = true;
@@ -199,7 +202,6 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            Debug.Log("r");
             foreach (var cctv in visibleCCTVList)
             {
                 if (tempCCTV != null)
@@ -213,7 +215,6 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            Debug.Log("l");
             foreach (var cctv in visibleCCTVList)
             {
                 if (tempCCTV != null)
@@ -227,7 +228,6 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            Debug.Log("u");
             foreach (var cctv in visibleCCTVList)
             {
                 if (tempCCTV != null)
@@ -241,7 +241,6 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            Debug.Log("d");
             foreach (var cctv in visibleCCTVList)
             {
                 if (tempCCTV != null)
@@ -283,6 +282,24 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.A))
         {
             if (isDetected) return;
+            
+            visibleCCTVList = new List<CCTVEnemy>();
+
+            foreach (var t in cctvList)
+                if (Camera.main is { })
+                {
+                    var worldPos = Camera.main.WorldToViewportPoint(t.transform.position);
+                    Debug.Log(t.gameObject.name + worldPos);
+                    if (PositionCheck(worldPos.x) && PositionCheck(worldPos.y) && worldPos.z > 0)
+                        visibleCCTVList.Add(t);
+                }
+            
+            if (visibleCCTVList.Count <= 0)
+            {
+                TurnOffManipulator();
+                return;
+            }
+            
             manipulatingCam = (!manipulatingCam);
             isUsingItem = isCloaked || manipulatingCam;
 
@@ -310,25 +327,9 @@ public class Player : MonoBehaviour
 
     private bool TurnOnManipulator()
     {
-        var cctvList = FindObjectsOfType<CCTVEnemy>().ToList();
-        visibleCCTVList = new List<CCTVEnemy>();
-
-        if (cctvList.Count <= 0) return true;
-
-        foreach (var t in cctvList)
-            if (Camera.main is { })
-            {
-                var worldPos = Camera.main.WorldToViewportPoint(t.transform.position);
-                Debug.Log(t.gameObject.name + worldPos);
-                if (PositionCheck(worldPos.x) && PositionCheck(worldPos.y) && worldPos.z > 0)
-                    visibleCCTVList.Add(t);
-            }
-
-        Debug.Log(visibleCCTVList.Count);
-
-        if (visibleCCTVList.Count <= 0) return true;
         targetCCTV = visibleCCTVList[0];
 
+        rb.velocity = Vector2.zero;
         UpdateCCTV(null);
         return false;
     }

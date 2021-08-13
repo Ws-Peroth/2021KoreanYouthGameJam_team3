@@ -692,7 +692,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36015614a8929d243b567de3987ae145, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDetected: 1
+  isDetected: 0
   isGroundCheckCirclePos: {x: 0, y: -1.76}
   speed: 3
   runningSpeed: 5
@@ -701,7 +701,8 @@ MonoBehaviour:
     elements: []
   isUsingItem: 0
   isCloaked: 0
-  targetIndicator: {fileID: 0}
+  targetIndicator: {fileID: 7689341222692538795, guid: 38ff6095907aa8b4b801646def5bd4ea, type: 3}
+  isGround: 0
 --- !u!1 &2844969029439706285
 GameObject:
   m_ObjectHideFlags: 0
