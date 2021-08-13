@@ -8,6 +8,7 @@ namespace peroth
     {
         public Transform target;
         public Rigidbody2D gameObjectRigidbody;
+        public ViewFieldTest fieldOfView;
 
         public Vector2 positionA;
         public Vector2 positionB;
@@ -26,6 +27,9 @@ namespace peroth
 
         private void Start()
         {
+            fieldOfView.transform.rotation = Quaternion.Euler(new Vector3(0, 180, angleRange / 2));
+            fieldOfView.fov = angleRange;
+            fieldOfView.viewDistance = distance;
             StartCoroutine(EnemyMove());
         }
 
