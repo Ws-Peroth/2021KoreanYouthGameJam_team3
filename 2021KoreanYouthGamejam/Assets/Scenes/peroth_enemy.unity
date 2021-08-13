@@ -5204,7 +5204,6 @@ MonoBehaviour:
   isCollisionFar: 0
   target: {fileID: 1955831276}
   gameObjectRigidbody: {fileID: 664253346}
-  spriteRenderer: {fileID: 664253348}
   positionA: {x: 3.5, y: -2.6}
   positionB: {x: 6.77, y: -2.6}
   moveSpeed: 3
@@ -5372,13 +5371,14 @@ GameObject:
   - component: {fileID: 1500666080}
   - component: {fileID: 1500666076}
   - component: {fileID: 1500666077}
+  - component: {fileID: 1500666081}
   m_Layer: 0
   m_Name: enemy-Human
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!50 &1500666076
 Rigidbody2D:
   serializedVersion: 4
@@ -5475,7 +5475,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1500666075}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.95, y: 1.72, z: 0}
+  m_LocalPosition: {x: 3.49, y: -1.83, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -5501,13 +5501,24 @@ MonoBehaviour:
   isCollisionFar: 0
   target: {fileID: 1955831276}
   gameObjectRigidbody: {fileID: 1500666076}
-  spriteRenderer: {fileID: 1500666078}
   positionA: {x: -7.8, y: -2.6}
   positionB: {x: 1.7, y: 0.6}
   moveSpeed: 3
   angleRange: 17
   distance: 5
   delayTime: 0.1
+--- !u!114 &1500666081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1500666075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2beb89923ac9d304db69d5387f5173f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1608577226
 GameObject:
   m_ObjectHideFlags: 0
@@ -5626,7 +5637,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!50 &1955831273
 Rigidbody2D:
   serializedVersion: 4
