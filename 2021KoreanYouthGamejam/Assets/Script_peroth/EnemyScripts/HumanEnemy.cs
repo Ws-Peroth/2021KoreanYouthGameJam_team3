@@ -12,7 +12,7 @@ namespace peroth
         public Vector2 positionA;
         public Vector2 positionB;
 
-        public float moveSpeed = 3.0f;
+        public float moveSpeed = 0.5f;
         public float angleRange = 45f;
         public float distance = 5f;
         public float delayTime = 0.1f;
@@ -121,7 +121,7 @@ namespace peroth
                 }
 
                 // ������ ���ӵ� ����
-                gameObjectRigidbody.velocity = velocityValue * 0.5f;
+                gameObjectRigidbody.velocity = velocityValue * moveSpeed;
                 yield return null;
             }
 

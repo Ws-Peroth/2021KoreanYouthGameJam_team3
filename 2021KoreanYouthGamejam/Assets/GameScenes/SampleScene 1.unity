@@ -7662,17 +7662,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -1471723759537992699, guid: 45a4c2ae70eb18b4cb99c116c4a920c3, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 1178717537538619536, guid: 45a4c2ae70eb18b4cb99c116c4a920c3, type: 3}
       propertyPath: m_RootOrder
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1178717537538619536, guid: 45a4c2ae70eb18b4cb99c116c4a920c3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 16.22
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 1178717537538619536, guid: 45a4c2ae70eb18b4cb99c116c4a920c3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.07
+      value: 8.68
       objectReference: {fileID: 0}
     - target: {fileID: 1178717537538619536, guid: 45a4c2ae70eb18b4cb99c116c4a920c3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7709,6 +7713,22 @@ PrefabInstance:
     - target: {fileID: 2165864992890470850, guid: 45a4c2ae70eb18b4cb99c116c4a920c3, type: 3}
       propertyPath: m_Name
       value: Effcenta_pose
+      objectReference: {fileID: 0}
+    - target: {fileID: 7926514862638830007, guid: 45a4c2ae70eb18b4cb99c116c4a920c3, type: 3}
+      propertyPath: positionA.x
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 7926514862638830007, guid: 45a4c2ae70eb18b4cb99c116c4a920c3, type: 3}
+      propertyPath: positionA.y
+      value: 6.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7926514862638830007, guid: 45a4c2ae70eb18b4cb99c116c4a920c3, type: 3}
+      propertyPath: positionB.x
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7926514862638830007, guid: 45a4c2ae70eb18b4cb99c116c4a920c3, type: 3}
+      propertyPath: positionB.y
+      value: 6.8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45a4c2ae70eb18b4cb99c116c4a920c3, type: 3}

@@ -979,7 +979,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &7926514862638830007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -998,11 +998,11 @@ MonoBehaviour:
   _cyan: {r: 0, g: 1, b: 1, a: 0.2}
   isCollisionNear: 0
   isCollisionFar: 0
-  target: {fileID: 0}
+  target: {fileID: 8689602697869519502, guid: d8a938dced69ce342bcb2fd49dd4a8b1, type: 3}
   gameObjectRigidbody: {fileID: -1471723759537992699}
   positionA: {x: 20, y: 1.8}
   positionB: {x: 10, y: 1.8}
-  moveSpeed: 3
+  moveSpeed: 0.2
   angleRange: 17
   distance: 5
   delayTime: 0.1
