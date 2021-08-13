@@ -257,7 +257,7 @@ public class Player : MonoBehaviour
             targetCCTV.StartCoroutine(targetCCTV.Neutralize());
             targetIndicator.SetActive(false);
             manipulatingCam = false;
-            isUsingItem = false;
+            isUsingItem = isCloaked || manipulatingCam;
             targetCCTV = null;
         }
     }
