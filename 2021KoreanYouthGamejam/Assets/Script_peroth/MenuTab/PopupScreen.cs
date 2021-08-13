@@ -9,8 +9,8 @@ namespace peroth
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 MenuTabManager.instance.isPopup = false;
+                ChatLogManager.instance.RemoveContentToText();
                 gameObject.SetActive(false);
-                Debug.Log("PopupScreen.cs : Update");
             }
         }
     }
