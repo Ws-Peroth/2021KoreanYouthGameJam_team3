@@ -1,32 +1,32 @@
 {
   "list": [
     {
-      "name": "BlankItem",
+      "name": "",
       "information": "",
       "havingCount": 0,
       "itemCode": 0
     },
     {
-      "name": "ItemA",
-      "information": "",
+      "name": "투명화 구체",
+      "information": "투명 망토를 품고 있는 구체야! 사용중에 움직이면 걸리고,\n로봇들은 적외선으로 감지하니까 조심해! -프리지아",
       "havingCount":0,
       "itemCode": 1
     },
     {
-      "name": "ItemB",
-      "information": "",
+      "name": "영상 조작기",
+      "information": "CCTV를 한 번에 한개까지 무력화 시킬 수 있어!\n너무 오래 사용하면 의심 받으니까 한번에 3초만! -프리지아",
       "havingCount": 0,
       "itemCode": 2
     },
     {
-      "name": "ItemC",
-      "information": "",
+      "name": "점프력 향상 깔창",
+      "information": "신발에 깔아두면 엄청 높게 뛸 수 있어! -프리지아",
       "havingCount": 0,
       "itemCode": 3
     },
     {
-      "name": "ItemD",
-      "information": "",
+      "name": "제인 도의 편지",
+      "information": "제인 도가 존 도에게 쓴 편지이다. 왜 이 시대에 편지같은 비효율 적인 수단을 쓰는거지?",
       "havingCount": 0,
       "itemCode": 4
     },
