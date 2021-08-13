@@ -6,6 +6,8 @@ namespace peroth
 {
     public class CCTVEnemy : PlayerDetect
     {
+        public ViewFieldTest fieldOfView;
+
         public Transform target;
         public SpriteRenderer spriteRenderer;
 
@@ -26,6 +28,9 @@ namespace peroth
 
         private void Start()
         {
+            fieldOfView.transform.rotation = Quaternion.Euler(new Vector3(0, 0, -90 + angleRange / 2));
+            fieldOfView.fov = angleRange;
+            fieldOfView.viewDistance = distance;
             StartCoroutine(EnemyMove());
         }
 
@@ -43,9 +48,10 @@ namespace peroth
             if (isCollisionNear) PlayerApproachNear();
 
             #endregion
+
         }
-        
-        #if UNITY_EDITOR
+
+#if UNITY_EDITOR
         private void OnDrawGizmos()
         {
             #region DrawDetectRange
@@ -58,7 +64,18 @@ namespace peroth
 
             #endregion
         }
-        #endif
+#endif
+        private void ShowViewField()
+        {
+
+            var transformValue = spriteRenderer.flipX ? transform.right * -1 : transform.right;
+
+            Handles.color = isCollisionNear ? _red : _blue;
+            Handles.DrawSolidArc(transform.position, Vector3.forward, transformValue, angleRange / 2, distance);
+            Handles.DrawSolidArc(transform.position, Vector3.forward, transformValue, -angleRange / 2, distance);
+
+        }
+
 
         public IEnumerator EnemyMove()
         {
@@ -131,5 +148,7 @@ namespace peroth
             yield return new WaitForSeconds(3f);
             isNeutralized = false;
         }
+
+
     }
 }
