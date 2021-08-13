@@ -9,8 +9,8 @@ EditorBuildSettings:
     path: Assets/Scenes/peroth.unity
     guid: 43fbed0311289d6408c689d6798f76b1
   - enabled: 1
-    path: Assets/GameScenes/SampleScene 1.unity
-    guid: ad607f35cf206a0419c77fd54f76ccb1
+    path: Assets/GameScenes/Stages/Stage1.unity
+    guid: 2f742c036bb205b458c67eca2404df28
   - enabled: 1
     path: Assets/Scenes/Loading.unity
     guid: d72710c876c32ad419263c1327cc6142

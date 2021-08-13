@@ -26,11 +26,15 @@ namespace peroth
         public float viewDistance = 0f;
         private Vector3 origin;
         private float startingAngle;
+        private Renderer renderer;
 
         private void Start()
         {
             mesh = new Mesh();
             GetComponent<MeshFilter>().mesh = mesh;
+            renderer = GetComponent<MeshRenderer>();
+            renderer.sortingLayerName = "Obstacles";
+            renderer.sortingOrder = -1;
             origin = Vector3.zero;
         }
 

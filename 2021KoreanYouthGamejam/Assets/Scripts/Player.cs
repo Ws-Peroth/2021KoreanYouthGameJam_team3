@@ -34,6 +34,7 @@ public class Player : MonoBehaviour
 
     private bool manipulatingCam;
     private bool moving;
+    private bool canManupulateCam = true;
 
     private Rigidbody2D rb;
     private bool running;
@@ -258,8 +259,16 @@ public class Player : MonoBehaviour
             targetIndicator.SetActive(false);
             manipulatingCam = false;
             isUsingItem = isCloaked || manipulatingCam;
+            StartCoroutine(cooldownManipulation());
             targetCCTV = null;
         }
+    }
+
+    private IEnumerator cooldownManipulation()
+    {
+        canManupulateCam = false;
+        yield return new WaitForSeconds(3f);
+        canManupulateCam = true;
     }
 
     private void CloakCape()
@@ -282,7 +291,8 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.A))
         {
             if (isDetected) return;
-            
+            if (!canManupulateCam) return;
+
             visibleCCTVList = new List<CCTVEnemy>();
 
             foreach (var t in cctvList)
