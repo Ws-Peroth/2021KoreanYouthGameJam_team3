@@ -61,7 +61,9 @@ namespace peroth
         public void DialogueLogButtonDown()
         {
             isPopup = true;
+            ChatLogManager.instance.AddContentToText();
             dialogueLogCanvas.SetActive(true);
+            ChatLogManager.instance.ShowText();
         }
 
         public void SaveAndQuitButtonDown()

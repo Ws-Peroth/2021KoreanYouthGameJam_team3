@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,7 +8,7 @@ public class CameraSizeSet : MonoBehaviour
     {
         Camera camera = GetComponent<Camera>();
         Rect rect = camera.rect;
-        float scaleheight = ((float)Screen.width / Screen.height) / ((float)16 / 9); // (°¡·Î / ¼¼·Î)
+        float scaleheight = ((float)Screen.width / Screen.height) / ((float)16 / 9); // (ê°€ë¡œ / ì„¸ë¡œ)
         float scalewidth = 1f / scaleheight;
         if (scaleheight < 1)
         {

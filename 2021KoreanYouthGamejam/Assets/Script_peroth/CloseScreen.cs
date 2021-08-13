@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace peroth
 {
@@ -12,6 +12,7 @@ namespace peroth
 
         public void CloseButtonDown()
         {
+            ChatLogManager.instance.RemoveContentToText();
             MenuTabManager.instance.isPopup = false;
             gameObject.SetActive(false);
             Debug.Log("CloseScreem.cs : CloseButtonDown");
