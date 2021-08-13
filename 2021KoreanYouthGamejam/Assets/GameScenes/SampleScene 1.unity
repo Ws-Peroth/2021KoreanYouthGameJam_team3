@@ -3433,7 +3433,7 @@ MonoBehaviour:
   itemNameText: {fileID: 1113199680}
   itemimage: {fileID: 0}
   selfTransform: {fileID: 303106948}
-  isDebug: 0
+  isDebug: 1
 --- !u!4 &898485229
 Transform:
   m_ObjectHideFlags: 0

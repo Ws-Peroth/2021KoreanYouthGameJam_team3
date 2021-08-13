@@ -145,7 +145,9 @@ namespace peroth
         public IEnumerator Neutralize()
         {
             isNeutralized = true;
+
             yield return new WaitForSeconds(3f);
+            
             isNeutralized = false;
         }
 
