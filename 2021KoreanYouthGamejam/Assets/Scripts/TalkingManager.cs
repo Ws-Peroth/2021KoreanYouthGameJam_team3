@@ -22,6 +22,7 @@ public class TalkingManager : Singleton<TalkingManager>
     public bool isDisplayingDialogue;
     public bool instantComplete;
     public bool hidingUI;
+    public bool isTalking;
 
     private readonly Dictionary<string, Sprite> dialogueImages = new Dictionary<string, Sprite>();
 
@@ -133,6 +134,7 @@ public class TalkingManager : Singleton<TalkingManager>
 
     public void NextDialogue() // 다음으로 넘어가기
     {
+        isTalking = true;
         if (player.targetNPC.txtNum != player.dialogues.elements[player.targetNPC.posNum].txt.Length - 1) // 대사가 남아 있을 때
         {
             player.targetNPC.txtNum += 1; // 대사 진행도 1 올리고
@@ -150,6 +152,7 @@ public class TalkingManager : Singleton<TalkingManager>
                 charactersSpeaking = new List<string>();
                 charactersSpeaking.Add(string.Empty);
                 charactersSpeaking.Add(string.Empty);
+                isTalking = false;
                 panel.gameObject.SetActive(false); // 대화를 끝낸다
             }
             else // 대사의 end 값이 false 일때

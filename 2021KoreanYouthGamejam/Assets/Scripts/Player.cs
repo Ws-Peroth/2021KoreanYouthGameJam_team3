@@ -79,6 +79,11 @@ public class Player : MonoBehaviour
             0.07f,
             1 << LayerMask.NameToLayer("Ground"));
 
+        if (TalkingManager.instance.isTalking)
+        {
+            return;
+        }
+
         if (!isUsingItem)
         {
             var axis = 0f;
