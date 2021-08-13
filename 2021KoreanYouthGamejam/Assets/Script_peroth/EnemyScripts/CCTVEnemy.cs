@@ -6,6 +6,8 @@ namespace peroth
 {
     public class CCTVEnemy : PlayerDetect
     {
+        [SerializeField] private GameObject killEffect;
+
         public ViewFieldTest fieldOfView;
 
         public Transform target;
@@ -26,11 +28,14 @@ namespace peroth
         private float dotValue;
         private Vector3 transformValue;
 
+        
+
         private void Start()
         {
             fieldOfView.transform.rotation = Quaternion.Euler(new Vector3(0, 0, -90 + angleRange / 2));
             fieldOfView.fov = angleRange;
             fieldOfView.viewDistance = distance;
+            killEffect.SetActive(false);
             StartCoroutine(EnemyMove());
         }
 
@@ -145,9 +150,11 @@ namespace peroth
         public IEnumerator Neutralize()
         {
             isNeutralized = true;
+            killEffect.SetActive(true);
 
             yield return new WaitForSeconds(3f);
-            
+
+            killEffect.SetActive(false);
             isNeutralized = false;
         }
 
