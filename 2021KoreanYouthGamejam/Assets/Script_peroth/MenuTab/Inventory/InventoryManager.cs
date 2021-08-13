@@ -72,6 +72,8 @@ namespace peroth
             File.WriteAllText(itemInventoryfilePath, json);
         }
 
+        public int GetItemHavingCount(ItemCode itemCode) => itemInformationList.list[ItemCodeEnumToInt(itemCode)].havingCount;
+
         public void AddItem(ItemCode itemCode, int addCount = 1)
         {
             itemInformationList.list[ItemCodeEnumToInt(itemCode)].AddItem(addCount);
