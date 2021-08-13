@@ -51,6 +51,10 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
 
+        manipulatingCam = false;
+        isUsingItem = false;
+        isCloaked = false;
+
         if (targetIndicator == null) targetIndicator = GameObject.Find("targetIndicator");
     }
 
@@ -159,6 +163,8 @@ public class Player : MonoBehaviour
     {
         #region 아이템 사용
 
+        if (!isGround) return;
+
         // 광학 미채 망토
         CloakCape();
 
@@ -183,7 +189,7 @@ public class Player : MonoBehaviour
         isCloaked = false;
         StartCoroutine(ChangeColorOverTime(cloackedColor, normalColor, 0.2f));
         // yield return new WaitForSeconds(0.2f);
-        isUsingItem = false;
+        isUsingItem = isCloaked || manipulatingCam;
         yield return null;
     }
 
@@ -275,8 +281,8 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.A))
         {
             if (isDetected) return;
-            manipulatingCam = !manipulatingCam;
-            isUsingItem = manipulatingCam;
+            manipulatingCam = (!manipulatingCam);
+            isUsingItem = isCloaked || manipulatingCam;
 
             if (manipulatingCam)
             {
