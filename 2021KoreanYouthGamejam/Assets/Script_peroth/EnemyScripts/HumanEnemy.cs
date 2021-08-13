@@ -8,7 +8,6 @@ namespace peroth
     {
         public Transform target;
         public Rigidbody2D gameObjectRigidbody;
-        public SpriteRenderer spriteRenderer;
 
         public Vector2 positionA;
         public Vector2 positionB;
@@ -19,6 +18,7 @@ namespace peroth
         public float delayTime = 0.1f;
 
         private Vector3 direction;
+        private bool flip;
 
         private float dotValue;
         private Vector3 transformValue;
@@ -33,7 +33,7 @@ namespace peroth
         {
             #region CalculateDistanceFromPlayer
 
-            transformValue = spriteRenderer.flipX ? transform.right * -1 : transform.right;
+            transformValue = transform.right * -1;
 
             dotValue = Mathf.Cos(Mathf.Deg2Rad * (angleRange / 2));
             direction = target.position - transform.position;
@@ -50,7 +50,7 @@ namespace peroth
         {
             #region DrawDetectRange
 
-            var transformValue = spriteRenderer.flipX ? transform.right * -1 : transform.right;
+            var transformValue = transform.right * -1;
 
             Handles.color = isCollisionNear ? _red : _blue;
             Handles.DrawSolidArc(transform.position, Vector3.forward, transformValue, angleRange / 2, distance);
@@ -99,7 +99,8 @@ namespace peroth
                     // ���� ���� ����
                     velocityValue = smallVector - bigVector;
                     gotoBigPosition = false;
-                    spriteRenderer.flipX = true;
+                    flip = false;
+                    FlipCharacter();
 
                     // ���ӵ� �ʱ�ȭ
                     gameObjectRigidbody.velocity = Vector2.zero;
@@ -111,7 +112,8 @@ namespace peroth
                     // ���� ���� ����
                     velocityValue = bigVector - smallVector;
                     gotoBigPosition = true;
-                    spriteRenderer.flipX = false;
+                    flip = true;
+                    FlipCharacter();
 
                     // ���ӵ� �ʱ�ȭ
                     gameObjectRigidbody.velocity = Vector2.zero;
@@ -124,6 +126,12 @@ namespace peroth
             }
 
             #endregion
+        }
+        
+        private void FlipCharacter()
+        {
+            if (flip) transform.rotation = Quaternion.Euler(0, 180, 0);
+            else transform.rotation = Quaternion.Euler(0, 0, 0);
         }
 
         public void PlayerApproachNear()
