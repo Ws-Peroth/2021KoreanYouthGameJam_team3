@@ -148,7 +148,7 @@ namespace peroth
             itemInformationText.text = itemInformationList.list[iconCode].information;
             itemNameText.text = itemInformationList.list[iconCode].name;
 
-            itemimage.sprite = imageList[iconCode];
+            // itemimage.sprite = imageList[iconCode];
         }
 
         #region EnumConversion

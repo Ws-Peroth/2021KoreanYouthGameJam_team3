@@ -42,7 +42,7 @@ public class Player : MonoBehaviour
     private CCTVEnemy targetCCTV;
     private List<CCTVEnemy> visibleCCTVList = new List<CCTVEnemy>();
     private List<CCTVEnemy> cctvList;
-
+    public GameObject cloakParticle;
     #endregion
 
     #region Player
@@ -170,12 +170,18 @@ public class Player : MonoBehaviour
 
         if (!isGround) return;
 
-        // 광학 미채 망토
-        CloakCape();
+        if (InventoryManager.instance.GetItemHavingCount(ItemCode.ItemA) <= 1)
+        {
+            // 광학 미채 망토
+            CloakCape();
+        }
 
         // 영상 조작기
 
-        VideoManipulator();
+        if (InventoryManager.instance.GetItemHavingCount(ItemCode.ItemB) <= 1)
+        {
+            VideoManipulator();
+        }
 
         #endregion
     }
@@ -185,6 +191,7 @@ public class Player : MonoBehaviour
         isUsingItem = true;
         rb.velocity = Vector2.zero;
         StartCoroutine(ChangeColorOverTime(normalColor, cloackedColor, 0.2f));
+        cloakParticle.SetActive(true);
         // yield return new WaitForSeconds(0.2f);
         isCloaked = true;
         yield return null;
@@ -193,6 +200,7 @@ public class Player : MonoBehaviour
     private IEnumerator Uncloak()
     {
         isCloaked = false;
+        cloakParticle.SetActive(false);
         StartCoroutine(ChangeColorOverTime(cloackedColor, normalColor, 0.2f));
         // yield return new WaitForSeconds(0.2f);
         isUsingItem = isCloaked || manipulatingCam;
