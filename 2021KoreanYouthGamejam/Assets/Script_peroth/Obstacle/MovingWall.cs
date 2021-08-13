@@ -11,12 +11,19 @@ public class MovingWall : MonoBehaviour
     [SerializeField] bool moveY;
 
     [SerializeField] float speed;
+    [SerializeField] float delay;
 
     private bool gotoBigPos;
+    private Vector2 moveDir = Vector2.zero;
 
     private void Start()
     {
-        if(posA < posB)
+        moveDir = Vector2.zero;
+
+        if (moveX) moveDir.x++;
+        if (moveY) moveDir.y++;
+
+        if (posA < posB)
         {
             float temp = posA;
             posA = posB;
@@ -24,11 +31,55 @@ public class MovingWall : MonoBehaviour
         }
 
         gotoBigPos = true;
+
+        StartCoroutine(Move());
     }
 
-    private void Update()
+    IEnumerator Move()
     {
-        
+        while (true)
+        {
+            if (moveX)
+            {
+                if (transform.localPosition.x > posA)
+                {
+                    gotoBigPos = false;
+                    MoveWall();
+                    yield return new WaitForSeconds(delay);
+                }
+                else if (transform.localPosition.x < posB)
+                {
+                    gotoBigPos = true;
+                    MoveWall();
+                    yield return new WaitForSeconds(delay);
+                }
+            }
+            else if(moveY)
+            {
+                if (transform.localPosition.y > posA)
+                {
+                    gotoBigPos = false;
+                    MoveWall();
+                    yield return new WaitForSeconds(delay);
+                }
+                else if (transform.localPosition.y < posB)
+                {
+                    gotoBigPos = true;
+                    MoveWall();
+                    yield return new WaitForSeconds(delay);
+                }
+            }
+
+            MoveWall();
+            yield return null;
+        }
     }
 
+    private void MoveWall()
+    {
+        if (gotoBigPos)
+            transform.Translate(moveDir * Time.deltaTime * speed);
+        else
+            transform.Translate(moveDir * Time.deltaTime * -speed);
+    }
 }
