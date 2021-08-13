@@ -18,10 +18,13 @@ public class ConversationLog : MonoBehaviour
         }
         conversationLog.Add($"{name}: {dialogue}");
         logText.text = "";
+        string txt = "";
         foreach (string line in conversationLog)
         {
-            if (logText.text == "") logText.text += line;
-            else logText.text += "\n" + line;
+            if (txt == "") txt += line;
+            else txt += "\n" + line;
         }
+
+        logText.text = txt;
     }
 }
