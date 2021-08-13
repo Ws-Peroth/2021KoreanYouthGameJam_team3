@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections;
 using System.Collections.Generic;
 using peroth;
@@ -9,8 +9,8 @@ public class ConversationLog : MonoBehaviour
 {
     private List<string> conversationLog = new List<string>();
 
-    string textLog = "";    // text¿¡ Àû¿ëµÉ ³»¿ë
-    string addText = "";    // Ãß°¡ÇÏ´Â ³»¿ë
+    string textLog = "";    // textì— ì ìš©ë  ë‚´ìš©
+    string addText = "";    // ì¶”ê°€í•˜ëŠ” ë‚´ìš©
 
     public void AddDialogue(string name, string dialogue)
     {
