@@ -18,15 +18,12 @@ namespace peroth
         {
             if (!isPopup)
             {
-                if (Input.GetKeyDown(KeyCode.Tab))
-                {
-                    if (!menuTab.activeSelf)
-                        ThisTabOpen();
-                }
                 if (Input.GetKeyDown(KeyCode.Escape))
                 {
                     if (menuTab.activeSelf)
                         CloseButtonDown();
+                    else
+                        ThisTabOpen();
                 }
             }
         }
