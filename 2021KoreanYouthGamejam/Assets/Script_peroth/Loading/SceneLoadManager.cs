@@ -7,8 +7,10 @@ namespace peroth
     public enum Scenes
     {
         Openning,
-        Main,
-        Loading
+        Loading,
+        Stage1,
+        Stage2,
+        Stage3,
     }
 
     public class SceneLoadManager : SingletonDontDestroy<SceneLoadManager>
@@ -65,8 +67,10 @@ namespace peroth
             return scene switch
             {
                 Scenes.Openning => 0,
-                Scenes.Main => 1,
-                Scenes.Loading => (int)Scenes.Loading,
+                Scenes.Loading => 1,
+                Scenes.Stage1 => 2,
+                Scenes.Stage2 => 3,
+                Scenes.Stage3 => 4,
                 _ => -1
             };
         }
@@ -76,8 +80,10 @@ namespace peroth
             return scene switch
             {
                 0 => Scenes.Openning,
-                1 => Scenes.Main,
-                2 => Scenes.Loading,
+                1 => Scenes.Loading,
+                2 => Scenes.Stage1,
+                3 => Scenes.Stage2,
+                4 => Scenes.Stage3,
                 _ => throw new System.NotImplementedException()
             };
         }

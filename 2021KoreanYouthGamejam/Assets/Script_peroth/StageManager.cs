@@ -10,7 +10,7 @@ namespace peroth
 
         private void Start()
         {
-            currentStage = SceneLoadManager.ScenesEnumToInt(Scenes.Main);
+            currentStage = SceneLoadManager.ScenesEnumToInt(Scenes.Openning);
         }
 
         public void StageClear()
