@@ -39,10 +39,16 @@ public class Player : MonoBehaviour
     private Rigidbody2D rb;
     private bool running;
     private List<SpriteRenderer> srList = new List<SpriteRenderer>();
-    private CCTVEnemy targetCCTV;
+    private CCTVEnemy targetCCTV = null;
+
     private List<CCTVEnemy> visibleCCTVList = new List<CCTVEnemy>();
+
     private List<CCTVEnemy> cctvList;
     public GameObject cloakParticle;
+
+    [SerializeField] public List<CCTVListNode> XposCCTVList = new List<CCTVListNode>();
+    [SerializeField] public List<CCTVListNode> YposCCTVList = new List<CCTVListNode>();
+    public int targetCode;
     #endregion
 
     #region Player
@@ -234,57 +240,73 @@ public class Player : MonoBehaviour
 
     private void SelectCCTV(CCTVEnemy tempCCTV, Vector2 pos)
     {
+        #region MoveCam
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            foreach (var cctv in visibleCCTVList)
-            {
-                if (tempCCTV != null)
-                    if (tempCCTV.transform.position.x > cctv.transform.position.x)
-                        continue;
-                if (cctv.transform.position.x > pos.x) tempCCTV = cctv;
-            }
+            int index = CodeToXIndex(targetCode);
+            Debug.Log($"RA : idx = {index}");
 
-            UpdateCCTV(tempCCTV);
+            if (index == -1) return;
+
+            if (index + 1 < XposCCTVList.Count)
+            {
+                index++;
+                tempCCTV = XposCCTVList[index].cctv;
+                targetCode = XposIndexToCode(index);
+                Debug.Log($"RA : new idx = {index}");
+
+                UpdateCCTV(tempCCTV);
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            foreach (var cctv in visibleCCTVList)
-            {
-                if (tempCCTV != null)
-                    if (tempCCTV.transform.position.x < cctv.transform.position.x)
-                        continue;
-                if (cctv.transform.position.x < pos.x) tempCCTV = cctv;
-            }
+            int index = CodeToXIndex(targetCode);
+            Debug.Log($"LA : idx = {index}");
 
-            UpdateCCTV(tempCCTV);
+            if (index == -1) return;
+            if (index - 1 >= 0)
+            {
+                tempCCTV = XposCCTVList[--index].cctv;
+                targetCode = XposIndexToCode(index);
+                Debug.Log($"LA : new idx = {index}");
+
+                UpdateCCTV(tempCCTV);
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            foreach (var cctv in visibleCCTVList)
-            {
-                if (tempCCTV != null)
-                    if (tempCCTV.transform.position.y > cctv.transform.position.y)
-                        continue;
-                if (cctv.transform.position.y > pos.y) tempCCTV = cctv;
-            }
+            int index = CodeToYIndex(targetCode);
+            Debug.Log($"UA : idx = {index}");
 
-            UpdateCCTV(tempCCTV);
+            if (index == -1) return;
+            if (index + 1 < YposCCTVList.Count)
+            {
+                tempCCTV = YposCCTVList[++index].cctv;
+                targetCode = YposIndexToCode(index);
+                Debug.Log($"UA : new idx = {index}");
+                UpdateCCTV(tempCCTV);
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            foreach (var cctv in visibleCCTVList)
-            {
-                if (tempCCTV != null)
-                    if (tempCCTV.transform.position.y < cctv.transform.position.y)
-                        continue;
-                if (cctv.transform.position.y < pos.y) tempCCTV = cctv;
-            }
+            int index = CodeToYIndex(targetCode);
+            Debug.Log($"DA : idx = {index}");
 
-            UpdateCCTV(tempCCTV);
+            if (index == -1) return;
+            if (index - 1 >= 0)
+            {
+                tempCCTV = YposCCTVList[--index].cctv;
+                targetCode = YposIndexToCode(index);
+                Debug.Log($"DA : new idx = {index}");
+
+
+                UpdateCCTV(tempCCTV);
+            }
         }
+        #endregion
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -294,6 +316,7 @@ public class Player : MonoBehaviour
             isUsingItem = isCloaked || manipulatingCam;
             StartCoroutine(cooldownManipulation());
             targetCCTV = null;
+            targetCode = 0;
         }
     }
 
@@ -331,6 +354,8 @@ public class Player : MonoBehaviour
             if (isDetected) return;
             if (!canManupulateCam) return;
 
+
+            #region MakeList
             visibleCCTVList = new List<CCTVEnemy>();
 
             foreach (var t in cctvList)
@@ -343,12 +368,26 @@ public class Player : MonoBehaviour
                 }
             
             Debug.Log(visibleCCTVList.Count);
-            
+
+            #endregion
+
+
             if (visibleCCTVList.Count <= 0)
             {
                 TurnOffManipulator();
                 return;
             }
+            #region ArraySort
+            for (int i = 0; i < visibleCCTVList.Count; i++)
+            {
+                CCTVListNode node = new CCTVListNode(visibleCCTVList[i], i, visibleCCTVList[i].transform.position);
+                XposCCTVList.Add(node);
+                YposCCTVList.Add(node);
+            }
+
+            XposCCTVList = XposCCTVList.OrderBy(x => x.position.x).ToList();
+            YposCCTVList = YposCCTVList.OrderBy(x => x.position.y).ToList();
+            #endregion
 
             manipulatingCam = (!manipulatingCam);
             isUsingItem = isCloaked || manipulatingCam;
@@ -361,17 +400,31 @@ public class Player : MonoBehaviour
             {
                 TurnOffManipulator();
             }
+
+            for (int i = 0; i < XposCCTVList.Count; i++)
+            {
+                Debug.Log($"X List[{i}] : {XposCCTVList[i].cctv.name}");
+            }
+            for (int i = 0; i < YposCCTVList.Count; i++)
+            {
+                Debug.Log($"Y List[{i}] : {YposCCTVList[i].cctv.name}");
+            }
+
         }
 
         if (manipulatingCam)
         {
             if (visibleCCTVList.Count <= 0) return;
-            if (targetCCTV == null) targetCCTV = visibleCCTVList[0];
 
-            Vector2 pos = targetCCTV.transform.position;
-            CCTVEnemy tempCCTV = null;
+            if (targetCCTV == null)
+            {
+                targetCode = 0;
+                targetCCTV = XposCCTVList[CodeToXIndex(targetCode)].cctv;
+            }
 
-            SelectCCTV(tempCCTV, pos);
+            Vector2 pos = XposCCTVList[CodeToXIndex(targetCode)].position;
+
+            SelectCCTV(targetCCTV, pos);
         }
     }
 
@@ -444,4 +497,70 @@ public class Player : MonoBehaviour
     }
 
     #endregion
+
+    private int CodeToXIndex(int code)
+    {
+        for (int i = 0; i < XposCCTVList.Count; i++)
+        {
+            if (XposCCTVList[i].code == code)
+                return i;
+        }
+        Debug.LogError("OutOfBound");
+        return -1;
+    }
+
+    private int CodeToYIndex(int code)
+    {
+        for (int i = 0; i < YposCCTVList.Count; i++)
+        {
+            if (YposCCTVList[i].code == code)
+                return i;
+        }
+        Debug.LogError("OutOfBound");
+        return -1;
+    }
+
+    private int XposIndexToCode(int index)
+    {
+        if (index < 0)
+        {
+            Debug.LogError("OutOfBound");
+            return -1;
+        }
+        if (XposCCTVList.Count <= index)
+        {
+            Debug.LogError("OutOfBound");
+            return -1;
+        }
+
+        return XposCCTVList[index].code;
+    }
+    private int YposIndexToCode(int index)
+    {
+        if (index < 0)
+        {
+            Debug.LogError("OutOfBound");
+            return -1;
+        }
+        if (YposCCTVList.Count <= index)
+        {
+            Debug.LogError("OutOfBound");
+            return -1;
+        }
+
+        return YposCCTVList[index].code;
+    }
+}
+public class CCTVListNode
+{
+    public CCTVEnemy cctv;
+    public int code;
+    public Vector2 position;
+
+    public CCTVListNode(CCTVEnemy cctv, int code, Vector2 position)
+    {
+        this.cctv = cctv;
+        this.code = code;
+        this.position = position;
+    }
 }
