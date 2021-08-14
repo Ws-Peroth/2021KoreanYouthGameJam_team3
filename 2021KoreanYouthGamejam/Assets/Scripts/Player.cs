@@ -494,6 +494,11 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            moving = false;
+            running = false;
+            anim.SetBool("walk", false);
+            anim.SetBool("run", false);
+            anim.SetBool("idle", true);
             if (!TalkingManager.instance.isDisplayingDialogue)
                 TalkingManager.instance.NextDialogue(); // 다음으로 넘어가기
             else

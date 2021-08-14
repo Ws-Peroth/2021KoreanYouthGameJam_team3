@@ -124,6 +124,6 @@
     "name": "나",
     "txt": ["이렇게...나의 '교감의 집배원'으로서의 삶이 시작되었다."],
     "type" : "event",
-    "img" : "EventBlack"
+    "image" : "EventBlack"
   }
 ]
