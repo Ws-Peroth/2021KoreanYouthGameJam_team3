@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using peroth;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -55,6 +56,8 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
+        
+
         srList = GetComponentsInChildren<SpriteRenderer>().ToList();
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
@@ -63,6 +66,18 @@ public class Player : MonoBehaviour
         manipulatingCam = false;
         isUsingItem = false;
         isCloaked = false;
+
+        int tmp = SceneManager.GetActiveScene().buildIndex;
+        if (tmp >= 6)
+        {
+            InventoryManager.instance.AddItem(ItemCode.ItemA);  // 광학?
+            InventoryManager.instance.AddItem(ItemCode.ItemB);  // 투명?
+        }
+
+        if (tmp >= 9)
+        {
+            InventoryManager.instance.AddItem(ItemCode.ItemC);  // 편지
+        }
 
         if (targetIndicator == null) targetIndicator = GameObject.Find("targetIndicator");
     }
@@ -172,7 +187,7 @@ public class Player : MonoBehaviour
     private void Jump()
     {
         rb.velocity = Vector2.zero;
-        rb.AddForce(Vector2.up * 738);
+        rb.AddForce(Vector2.up * 820);
     }
 
     private bool PositionCheck(float position)
