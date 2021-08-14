@@ -34,6 +34,7 @@ public class TalkingManager : Singleton<TalkingManager>
         charactersSpeaking = new List<string>();
         charactersSpeaking.Add(string.Empty);
         charactersSpeaking.Add(string.Empty);
+        leftImage.transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
         player = FindObjectOfType<Player>();
     }
 
