@@ -20,7 +20,7 @@ namespace peroth
         public void NewGameButtonDown()
         {
             Debug.Log("New Game");
-            SceneLoadManager.instance.SceneChange(Scenes.Stage1);
+            SceneLoadManager.instance.SceneChange(Scenes.Home1);
         }
 
         public void LoadGameButtonDown()

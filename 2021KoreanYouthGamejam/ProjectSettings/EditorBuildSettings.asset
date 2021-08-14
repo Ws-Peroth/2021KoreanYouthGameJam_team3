@@ -12,15 +12,36 @@ EditorBuildSettings:
     path: Assets/Scenes/Loading.unity
     guid: d72710c876c32ad419263c1327cc6142
   - enabled: 1
+    path: Assets/GameScenes/Stages/Home_1.unity
+    guid: 9c173ca4f3a212c4284ee26987593424
+  - enabled: 1
+    path: Assets/GameScenes/Stages/Street_1.unity
+    guid: 1771d8d92225027458aeaa14fa59f760
+  - enabled: 1
+    path: Assets/GameScenes/Stages/Factory.unity
+    guid: 9f9b8e877974eb744b2e84ee02c9fb7f
+  - enabled: 1
+    path: Assets/GameScenes/Stages/Street_2.unity
+    guid: d3147611d526d5d4eab8e3186df3ed71
+  - enabled: 1
     path: Assets/GameScenes/Stages/Scene1.unity
     guid: 759093af83cb8c441865d5f5c29ba528
   - enabled: 1
     path: Assets/GameScenes/Stages/Stage2.unity
     guid: a2705795320509a47a1f8e06b5a397ef
   - enabled: 1
+    path: Assets/GameScenes/Stages/FOH_1.unity
+    guid: 7b5f2ef21afdcc94a89291b8df062028
+  - enabled: 1
     path: Assets/GameScenes/Stages/Stage3.unity
     guid: 740f3a3960cf15b47b9905fa46dcdee8
   - enabled: 1
     path: Assets/GameScenes/Stages/Scene4.unity
     guid: 2f9ae42976093bd4cbe9d172317d2dd4
+  - enabled: 1
+    path: Assets/GameScenes/Stages/FOH_2.unity
+    guid: 2006809a609c45449bb87148dede5e01
+  - enabled: 1
+    path: Assets/GameScenes/Stages/Cre.unity
+    guid: 8be581892358b8c4585cf61a1e7c1e59
   m_configObjects: {}

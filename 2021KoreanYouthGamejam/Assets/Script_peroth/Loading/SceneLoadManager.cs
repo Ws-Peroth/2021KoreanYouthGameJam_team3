@@ -8,9 +8,17 @@ namespace peroth
     {
         Openning,
         Loading,
+        Home1,
+        Street1,
+        Fctory,
+        Street2,
         Stage1,
         Stage2,
+        FOH1,
         Stage3,
+        Stage4,
+        FOH2,
+        Cre
     }
 
     public class SceneLoadManager : SingletonDontDestroy<SceneLoadManager>
@@ -67,10 +75,18 @@ namespace peroth
             return scene switch
             {
                 Scenes.Openning => 0,
-                Scenes.Loading => 1,
-                Scenes.Stage1 => 2,
-                Scenes.Stage2 => 3,
-                Scenes.Stage3 => 4,
+                Scenes.Loading  => 1,
+                Scenes.Home1    => 2,
+                Scenes.Street1  => 3,
+                Scenes.Fctory   => 4,
+                Scenes.Street2  => 5,
+                Scenes.Stage1   => 6,
+                Scenes.Stage2   => 7,
+                Scenes.FOH1     => 8,
+                Scenes.Stage3   => 9,
+                Scenes.Stage4   => 10,
+                Scenes.FOH2     => 11,
+                Scenes.Cre      => 12,
                 _ => -1
             };
         }
@@ -81,9 +97,17 @@ namespace peroth
             {
                 0 => Scenes.Openning,
                 1 => Scenes.Loading,
-                2 => Scenes.Stage1,
-                3 => Scenes.Stage2,
-                4 => Scenes.Stage3,
+                2 => Scenes.Home1,
+                3 => Scenes.Street1,
+                4 => Scenes.Fctory,
+                5 =>Scenes.Street2,
+                6 => Scenes.Stage1,
+                7 => Scenes.Stage2,
+                8 => Scenes.FOH1,
+                9 => Scenes.Stage3,
+                10 => Scenes.Stage4,
+                11 => Scenes.FOH2,
+                12 => Scenes.Cre,
                 _ => throw new System.NotImplementedException()
             };
         }
