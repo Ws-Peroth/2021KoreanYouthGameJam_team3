@@ -8,15 +8,12 @@ namespace peroth
     {
         public int currentStage;
 
-        private void Start()
-        {
-            currentStage = SceneLoadManager.ScenesEnumToInt(Scenes.Openning);
-        }
-
         public void StageClear()
         {
             currentStage++;
-            SceneLoadManager.instance.SceneChange(SceneLoadManager.IntToScenesEnum(currentStage));
+            Scenes scene = SceneLoadManager.IntToScenesEnum(currentStage);
+            SceneLoadManager.instance.SceneChange(scene);
+            Debug.Log(scene);
         }
 
     }

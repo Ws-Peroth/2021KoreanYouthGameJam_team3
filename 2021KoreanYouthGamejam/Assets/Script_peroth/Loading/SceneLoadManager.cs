@@ -21,6 +21,7 @@ namespace peroth
         public void SceneChange(Scenes nextSceneEnum)
         {
             nextScene = nextSceneEnum;
+            StageManager.instance.currentStage = ScenesEnumToInt(nextScene);
             SceneManager.LoadScene(ScenesEnumToInt(Scenes.Loading));
 
             Debug.Log("Loading Scene Load Finish");
@@ -29,7 +30,6 @@ namespace peroth
 
         private IEnumerator LoadScene()
         {
-            StageManager.instance.currentStage = ScenesEnumToInt(nextScene);
             yield return new WaitForSeconds(1f);
 
             var op = SceneManager.LoadSceneAsync(ScenesEnumToInt(nextScene));
