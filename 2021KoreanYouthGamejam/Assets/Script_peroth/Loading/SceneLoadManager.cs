@@ -29,6 +29,17 @@ namespace peroth
         public void SceneChange(Scenes nextSceneEnum)
         {
             nextScene = nextSceneEnum;
+
+            if(nextScene == Scenes.Stage1)
+            {
+                InventoryManager.instance.AddItem(ItemCode.ItemA);  // 광학?
+                InventoryManager.instance.AddItem(ItemCode.ItemB);  // 투명?
+            }
+            if(nextScene == Scenes.Stage3)
+            {
+                InventoryManager.instance.AddItem(ItemCode.ItemC);  // 편지?
+            }
+
             StageManager.instance.currentStage = ScenesEnumToInt(nextScene);
             SceneManager.LoadScene(ScenesEnumToInt(Scenes.Loading));
 
