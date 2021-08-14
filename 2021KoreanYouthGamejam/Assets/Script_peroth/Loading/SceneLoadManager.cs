@@ -28,12 +28,9 @@ namespace peroth
 
         public void SceneChange(Scenes nextSceneEnum)
         {
-            if (nextScene == Scenes.Openning) MusicClass.instance.StopMusic();
-            else MusicClass.instance.StageSongOn();
-
             nextScene = nextSceneEnum;
 
-            if(nextScene == Scenes.Stage1)
+            if (nextScene == Scenes.Stage1)
             {
                 InventoryManager.instance.AddItem(ItemCode.ItemA);  // 광학?
                 InventoryManager.instance.AddItem(ItemCode.ItemB);  // 투명?
@@ -77,6 +74,18 @@ namespace peroth
                     {
                         yield return new WaitForSeconds(1f);
                         progressBarFillAmount = 0;
+
+                        #region Song
+                        if (nextScene == Scenes.Openning)
+                        {
+                            MusicClass.instance.TitleSongOn();
+                        }
+                        else
+                        {
+                            MusicClass.instance.StageSongOn();
+                        }
+                        #endregion
+
                         op.allowSceneActivation = true;
                         yield break;
                     }
