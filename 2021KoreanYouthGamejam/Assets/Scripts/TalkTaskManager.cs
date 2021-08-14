@@ -4,17 +4,20 @@ using UnityEngine;
 
 public class TalkTaskManager : MonoBehaviour
 {
-    public NPC TalkTaskNpc;
+    public NPC[] TalkTaskNpc;
     public GameObject door;
-    public GameObject mark;
+    public GameObject[] mark;
 
     // Update is called once per frame
     void Update()
     {
-        if (TalkTaskNpc.didItTalk)
+        for (int i = 0; i < TalkTaskNpc.Length; i++)
         {
-            door.SetActive(false);
-            mark.SetActive(false);
+            if (TalkTaskNpc[i].didItTalk)
+            {
+                door.SetActive(false);
+                mark[i].SetActive(false);
+            }
         }
     }
 }
