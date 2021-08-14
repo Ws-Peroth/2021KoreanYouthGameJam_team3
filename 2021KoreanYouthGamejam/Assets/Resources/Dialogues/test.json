@@ -1,8 +1,9 @@
 ﻿[
   {
-    "name": "John",
+    "name": "",
     "txt": ["Hello Ann!"],
-    "type": "conversation"
+    "type": "conversation",
+    "comment": "주석"
   },
   {
     "name": "앤",
@@ -33,7 +34,7 @@
     "txt": ["어? 진짜 찰스다!", "찰스야!!"]
   },
   {
-    "name": "Chaㄹ스",
+    "name": "",
     "txt": ["Oh! Hello 앤! 오랜만에 See!"]
   },
   {

@@ -138,9 +138,11 @@ namespace peroth
             else transform.rotation = Quaternion.Euler(0, 0, 0);
         }
 
-        public void PlayerApproachNear()
+        public virtual void PlayerApproachNear()
         {
-            IsDetected(target.GetComponent<Player>());
+            var player = target.GetComponent<Player>();
+            if (player.isCloaked) return;
+            IsDetected(player);
         }
     }
 }

@@ -143,8 +143,11 @@ namespace peroth
 
         public void PlayerApproachNear()
         {
+            var player = target.GetComponent<Player>();
+            if (player.isCloaked) return;
             if (isNeutralized) return;
-            IsDetected(target.GetComponent<Player>());
+            
+            IsDetected(player);
         }
 
         public IEnumerator Neutralize()

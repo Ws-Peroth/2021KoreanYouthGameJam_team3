@@ -91,7 +91,12 @@ public class TalkingManager : Singleton<TalkingManager>
         {
             eventIllustration.gameObject.SetActive(false);
             // 이미지 교체
-            if (dialogueImages.ContainsKey(charactersSpeaking[0]))
+            if (charactersSpeaking[0] == "")
+            {
+                leftImage.gameObject.SetActive(false);
+                rightImage.gameObject.SetActive(false);
+            }
+            else if (dialogueImages.ContainsKey(charactersSpeaking[0]))
             {
                 leftImage.sprite = dialogueImages[charactersSpeaking[0]];
                 leftImage.gameObject.SetActive(true);
@@ -101,7 +106,12 @@ public class TalkingManager : Singleton<TalkingManager>
                 leftImage.gameObject.SetActive(false);
             }
 
-            if (dialogueImages.ContainsKey(charactersSpeaking[1]))
+            if (charactersSpeaking[1] == "")
+            {
+                leftImage.gameObject.SetActive(false);
+                rightImage.gameObject.SetActive(false);
+            }
+            else if (dialogueImages.ContainsKey(charactersSpeaking[1]))
             {
                 rightImage.sprite = dialogueImages[charactersSpeaking[1]];
                 rightImage.gameObject.SetActive(true);
