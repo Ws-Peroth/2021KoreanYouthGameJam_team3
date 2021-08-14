@@ -9,7 +9,7 @@ namespace peroth
         [SerializeField] private GameObject keySettingCanvas;
         [SerializeField] private GameObject dialogueLogCanvas;
         [SerializeField] private GameObject menuTab;
-        [HideInInspector] public bool isMenuOn;
+        public bool isMenuOn;
 
 
         public bool isPopup;

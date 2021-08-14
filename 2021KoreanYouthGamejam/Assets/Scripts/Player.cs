@@ -494,6 +494,7 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            Debug.Log("Space");
             moving = false;
             running = false;
             anim.SetBool("walk", false);

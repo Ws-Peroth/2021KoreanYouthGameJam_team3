@@ -149,6 +149,7 @@ public class TalkingManager : Singleton<TalkingManager>
             return;
         }
         isTalking = true;
+        Debug.Log("Next");
         if (player.targetNPC.txtNum != player.dialogues.elements[player.targetNPC.posNum].txt.Length - 1) // 대사가 남아 있을 때
         {
             player.targetNPC.txtNum += 1; // 대사 진행도 1 올리고
