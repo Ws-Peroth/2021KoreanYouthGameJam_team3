@@ -32,11 +32,13 @@ namespace peroth
 
             if (nextScene == Scenes.Stage1)
             {
+                Debug.Log("Call Stage 1");
                 InventoryManager.instance.AddItem(ItemCode.ItemA);  // 광학?
                 InventoryManager.instance.AddItem(ItemCode.ItemB);  // 투명?
             }
             if(nextScene == Scenes.Stage3)
             {
+                Debug.Log("Call Stage 3");
                 InventoryManager.instance.AddItem(ItemCode.ItemC);  // 편지?
             }
 

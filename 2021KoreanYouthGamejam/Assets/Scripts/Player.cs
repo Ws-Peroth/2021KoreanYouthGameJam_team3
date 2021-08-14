@@ -202,8 +202,11 @@ public class Player : MonoBehaviour
             return;
         }
 
+        Debug.Log("use");
+
         if (InventoryManager.instance.GetItemHavingCount(ItemCode.ItemA) >= 1 || isDebug)
         {
+            Debug.Log("cape");
             // 광학 미채 망토
             CloakCape();
         }
