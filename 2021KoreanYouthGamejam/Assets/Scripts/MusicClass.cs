@@ -20,6 +20,12 @@ namespace peroth
             base.Awake();
         }
 
+        public void ChangeSoundValue(float volume)
+        {
+            _audioSource.volume = volume;
+        }
+        public float GetSoundValue() => _audioSource.volume;
+
         public void PlayMusic()
         {
             if (_audioSource.isPlaying) return;
