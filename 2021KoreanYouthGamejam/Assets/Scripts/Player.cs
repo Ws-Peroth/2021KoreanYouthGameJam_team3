@@ -342,12 +342,14 @@ public class Player : MonoBehaviour
                         visibleCCTVList.Add(t);
                 }
             
+            Debug.Log(visibleCCTVList.Count);
+            
             if (visibleCCTVList.Count <= 0)
             {
                 TurnOffManipulator();
                 return;
             }
-            
+
             manipulatingCam = (!manipulatingCam);
             isUsingItem = isCloaked || manipulatingCam;
 

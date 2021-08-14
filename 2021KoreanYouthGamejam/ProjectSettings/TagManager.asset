@@ -41,18 +41,18 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: BG
-    uniqueID: 3167967125
-    locked: 0
-  - name: Stage
-    uniqueID: 1662335563
-    locked: 0
-  - name: Obstacles
-    uniqueID: 2482252269
+  - name: Player
+    uniqueID: 1434987155
     locked: 0
   - name: NPC
     uniqueID: 3834752503
     locked: 0
-  - name: Player
-    uniqueID: 1434987155
+  - name: Obstacles
+    uniqueID: 2482252269
+    locked: 0
+  - name: Stage
+    uniqueID: 1662335563
+    locked: 0
+  - name: BG
+    uniqueID: 3167967125
     locked: 0
