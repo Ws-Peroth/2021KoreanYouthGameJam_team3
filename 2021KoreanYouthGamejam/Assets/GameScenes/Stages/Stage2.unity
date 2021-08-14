@@ -3613,7 +3613,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &625297508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9866,7 +9866,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 1
     m_MaxSize: 100
-    m_Alignment: 4
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 1
@@ -31026,6 +31026,7 @@ MonoBehaviour:
   targetIndicator: {fileID: 352146485}
   isGround: 0
   cloakParticle: {fileID: 3453772398402652154}
+  targetCode: 0
 --- !u!70 &7376686491940430278
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
