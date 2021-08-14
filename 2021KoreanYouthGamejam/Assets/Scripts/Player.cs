@@ -7,7 +7,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     #region Variables
-
+    [SerializeField] public bool isDebug = false;
      public bool isDetected;
 
     [SerializeField] private Vector2 isGroundCheckCirclePos;
@@ -202,7 +202,7 @@ public class Player : MonoBehaviour
             return;
         }
 
-        if (InventoryManager.instance.GetItemHavingCount(ItemCode.ItemA) >= 1)
+        if (InventoryManager.instance.GetItemHavingCount(ItemCode.ItemA) >= 1 || isDebug)
         {
             // 광학 미채 망토
             CloakCape();
@@ -210,7 +210,7 @@ public class Player : MonoBehaviour
 
         // 영상 조작기
 
-        if (InventoryManager.instance.GetItemHavingCount(ItemCode.ItemB) >= 1)
+        if (InventoryManager.instance.GetItemHavingCount(ItemCode.ItemB) >= 1 || isDebug)
         {
             VideoManipulator();
         }
@@ -378,6 +378,10 @@ public class Player : MonoBehaviour
                 TurnOffManipulator();
                 return;
             }
+
+            XposCCTVList = new List<CCTVListNode>();
+            YposCCTVList = new List<CCTVListNode>();
+
             #region ArraySort
             for (int i = 0; i < visibleCCTVList.Count; i++)
             {

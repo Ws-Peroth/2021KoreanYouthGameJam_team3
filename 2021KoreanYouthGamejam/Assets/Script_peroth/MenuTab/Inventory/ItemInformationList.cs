@@ -45,9 +45,9 @@ namespace peroth
     public enum ItemCode
     {
         BlankItem,
-        ItemA,
-        ItemB,
-        ItemC,
+        ItemA,  // 투명화
+        ItemB,  // 영상
+        ItemC,  // 편지
         ItemD,
         ItemE,
         ItemF,
