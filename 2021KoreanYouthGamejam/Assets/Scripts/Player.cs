@@ -64,6 +64,21 @@ public class Player : MonoBehaviour
     private void Update()
     {
         if (MenuTabManager.instance.isMenuOn) return;
+
+        if (!isGround && isUsingItem)
+        {
+            if (isCloaked)
+            {
+                StartCoroutine(Uncloak());
+            }
+
+            if (manipulatingCam)
+            {
+                manipulatingCam = (!manipulatingCam);
+                isUsingItem = isCloaked || manipulatingCam;
+                TurnOffManipulator();
+            }
+        }
         
         Movement();
 
@@ -291,9 +306,14 @@ public class Player : MonoBehaviour
 
     private void CloakCape()
     {
-        if (Input.GetKeyDown(KeyCode.W)) StartCoroutine(Cloak());
-
-        if (Input.GetKeyUp(KeyCode.W)) StartCoroutine(Uncloak());
+        if (!isCloaked)
+        {
+            if (Input.GetKeyDown(KeyCode.W)) StartCoroutine(Cloak());
+        }
+        else
+        {
+            if (Input.GetKeyUp(KeyCode.W)) StartCoroutine(Uncloak());
+        }
     }
     
     private void UpdateCCTV(CCTVEnemy temp)
