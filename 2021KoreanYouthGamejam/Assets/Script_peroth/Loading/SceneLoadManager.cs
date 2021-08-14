@@ -28,6 +28,9 @@ namespace peroth
 
         public void SceneChange(Scenes nextSceneEnum)
         {
+            if (nextScene == Scenes.Openning) MusicClass.instance.StopMusic();
+            else MusicClass.instance.StageSongOn();
+
             nextScene = nextSceneEnum;
 
             if(nextScene == Scenes.Stage1)
