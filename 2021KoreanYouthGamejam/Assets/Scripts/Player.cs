@@ -102,6 +102,7 @@ public class Player : MonoBehaviour
 
         if (TalkingManager.instance.isTalking || isDetected)
         {
+            rb.velocity = Vector2.zero;
             return;
         }
 
@@ -171,7 +172,7 @@ public class Player : MonoBehaviour
     private void Jump()
     {
         rb.velocity = Vector2.zero;
-        rb.AddForce(Vector2.up * 820);
+        rb.AddForce(Vector2.up * 656);
     }
 
     private bool PositionCheck(float position)
@@ -201,7 +202,7 @@ public class Player : MonoBehaviour
             return;
         }
 
-        if (InventoryManager.instance.GetItemHavingCount(ItemCode.ItemA) <= 1)
+        if (InventoryManager.instance.GetItemHavingCount(ItemCode.ItemA) >= 1)
         {
             // 광학 미채 망토
             CloakCape();
@@ -209,7 +210,7 @@ public class Player : MonoBehaviour
 
         // 영상 조작기
 
-        if (InventoryManager.instance.GetItemHavingCount(ItemCode.ItemB) <= 1)
+        if (InventoryManager.instance.GetItemHavingCount(ItemCode.ItemB) >= 1)
         {
             VideoManipulator();
         }
