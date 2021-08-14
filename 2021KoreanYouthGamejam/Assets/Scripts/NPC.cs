@@ -13,6 +13,8 @@ public class NPC : MonoBehaviour
 
     private Player player;
 
+    public bool didItTalk = false;
+
     private void Start()
     {
         player = FindObjectOfType<Player>();
@@ -21,6 +23,10 @@ public class NPC : MonoBehaviour
     private void Update()
     {
         var distance = Vector2.Distance(player.gameObject.transform.position, transform.position);
+        if (distance <= radius && Input.GetKeyDown(KeyCode.Space))
+        {
+            didItTalk = true;
+        }
         if (distance <= radius)
         {
             player.SetTarget(this);
