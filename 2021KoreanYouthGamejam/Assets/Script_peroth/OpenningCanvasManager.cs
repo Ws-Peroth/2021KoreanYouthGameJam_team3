@@ -13,6 +13,10 @@ namespace peroth
         [SerializeField] private GameObject background;
         [SerializeField] private GameObject optionCanvas;
 
+        private void Start()
+        {
+            StageManager.instance.currentStage = SceneLoadManager.ScenesEnumToInt(Scenes.Openning);
+        }
         public void NewGameButtonDown()
         {
             Debug.Log("New Game");
