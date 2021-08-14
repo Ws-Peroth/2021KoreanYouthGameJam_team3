@@ -4,10 +4,20 @@ using UnityEngine;
 
 namespace peroth
 {
-    public class StageManager : MonoBehaviour
+    public class StageManager : SingletonDontDestroy<StageManager>
     {
         public int currentStage;
 
+        private void Start()
+        {
+            currentStage = SceneLoadManager.ScenesEnumToInt(Scenes.Main);
+        }
+
+        public void StageClear()
+        {
+            currentStage++;
+            SceneLoadManager.instance.SceneChange(SceneLoadManager.IntToScenesEnum(currentStage));
+        }
 
     }
 }

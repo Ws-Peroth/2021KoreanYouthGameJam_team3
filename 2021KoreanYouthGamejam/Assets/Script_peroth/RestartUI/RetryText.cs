@@ -12,7 +12,13 @@ namespace peroth
         [SerializeField] private byte changeValue = 3;
         private bool isUp;
 
-
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                SceneLoadManager.instance.SceneChange(SceneLoadManager.IntToScenesEnum(StageManager.instance.currentStage));
+            }
+        }
 
         // Start is called before the first frame update
         void OnEnable()

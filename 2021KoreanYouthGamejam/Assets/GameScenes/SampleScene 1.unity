@@ -2420,7 +2420,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "\uC7AC\uC2DC\uC791\uD560\uB824\uBA74 R\uD0A4\uB97C \uB204\uB974\uC138\uC694"
+  m_Text: "\uC7AC\uC2DC\uC791\uD558\uB824\uBA74 R \uD0A4\uB97C \uB204\uB974\uC138\uC694"
 --- !u!222 &586787843
 CanvasRenderer:
   m_ObjectHideFlags: 0

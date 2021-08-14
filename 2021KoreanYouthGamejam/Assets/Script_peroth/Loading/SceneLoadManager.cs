@@ -27,6 +27,7 @@ namespace peroth
 
         private IEnumerator LoadScene()
         {
+            StageManager.instance.currentStage = ScenesEnumToInt(nextScene);
             yield return new WaitForSeconds(1f);
 
             var op = SceneManager.LoadSceneAsync(ScenesEnumToInt(nextScene));
@@ -59,14 +60,25 @@ namespace peroth
             }
         }
 
-        public int ScenesEnumToInt(Scenes scene)
+        public static int ScenesEnumToInt(Scenes scene)
         {
             return scene switch
             {
                 Scenes.Openning => 0,
                 Scenes.Main => 1,
-                Scenes.Loading => (int) Scenes.Loading,
+                Scenes.Loading => (int)Scenes.Loading,
                 _ => -1
+            };
+        }
+
+        public static Scenes IntToScenesEnum(int scene)
+        {
+            return scene switch
+            {
+                0 => Scenes.Openning,
+                1 => Scenes.Main,
+                2 => Scenes.Loading,
+                _ => throw new System.NotImplementedException()
             };
         }
     }
