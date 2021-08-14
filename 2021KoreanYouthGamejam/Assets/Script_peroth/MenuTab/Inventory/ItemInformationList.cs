@@ -9,7 +9,7 @@ namespace peroth
         public List<ItemInformation> list = new List<ItemInformation>();
     }
 
-    public struct ItemInformation
+    public class ItemInformation
     {
         public string name;
         public string information;
