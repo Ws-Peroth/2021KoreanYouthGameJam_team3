@@ -10,10 +10,8 @@ namespace peroth
                 CloseButtonDown();
         }
 
-        public void CloseButtonDown()
+        public virtual void CloseButtonDown()
         {
-            ChatLogManager.instance.RemoveContentToText();
-            MenuTabManager.instance.isPopup = false;
             gameObject.SetActive(false);
             Debug.Log("CloseScreem.cs : CloseButtonDown");
         }

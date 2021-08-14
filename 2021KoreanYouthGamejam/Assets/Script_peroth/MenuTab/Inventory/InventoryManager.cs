@@ -94,6 +94,7 @@ namespace peroth
         {
             var loadJson = File.ReadAllText(itemInventoryfilePath);
             itemInformationList = JsonConvert.DeserializeObject<ItemInformationList>(loadJson);
+
         }
 
         public void CreatIcon()

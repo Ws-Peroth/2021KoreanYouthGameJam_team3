@@ -13,5 +13,12 @@ namespace peroth
                 gameObject.SetActive(false);
             }
         }
+
+        public override void CloseButtonDown()
+        {
+            ChatLogManager.instance.RemoveContentToText();
+            MenuTabManager.instance.isPopup = false;
+            base.CloseButtonDown();
+        }
     }
 }

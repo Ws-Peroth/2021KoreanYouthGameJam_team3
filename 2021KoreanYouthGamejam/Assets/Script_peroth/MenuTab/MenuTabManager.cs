@@ -16,12 +16,18 @@ namespace peroth
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Tab) && !isPopup)
+            if (!isPopup)
             {
-                if (menuTab.activeSelf)
-                    CloseButtonDown();
-                else
-                    ThisTabOpen();
+                if (Input.GetKeyDown(KeyCode.Tab))
+                {
+                    if (!menuTab.activeSelf)
+                        ThisTabOpen();
+                }
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    if (menuTab.activeSelf)
+                        CloseButtonDown();
+                }
             }
         }
 
