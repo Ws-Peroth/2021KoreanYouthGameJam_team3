@@ -30,7 +30,7 @@ namespace peroth
         {
             nextScene = nextSceneEnum;
 
-            if (nextScene == Scenes.Stage1)
+            /*if (nextScene == Scenes.Stage1)
             {
                 Debug.Log("Call Stage 1");
                 InventoryManager.instance.AddItem(ItemCode.ItemA);  // 광학?
@@ -40,7 +40,7 @@ namespace peroth
             {
                 Debug.Log("Call Stage 3");
                 InventoryManager.instance.AddItem(ItemCode.ItemC);  // 편지?
-            }
+            }*/
 
             StageManager.instance.currentStage = ScenesEnumToInt(nextScene);
             SceneManager.LoadScene(ScenesEnumToInt(Scenes.Loading));

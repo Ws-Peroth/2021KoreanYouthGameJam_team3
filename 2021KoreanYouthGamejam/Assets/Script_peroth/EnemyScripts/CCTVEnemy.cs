@@ -75,10 +75,11 @@ namespace peroth
 
             var transformValue = spriteRenderer.flipX ? transform.right * -1 : transform.right;
 
+#if UNITY_EDITOR
             Handles.color = isCollisionNear ? _red : _blue;
             Handles.DrawSolidArc(transform.position, Vector3.forward, transformValue, angleRange / 2, distance);
             Handles.DrawSolidArc(transform.position, Vector3.forward, transformValue, -angleRange / 2, distance);
-
+#endif
         }
 
 

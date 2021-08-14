@@ -554,7 +554,8 @@ MonoBehaviour:
   TalkTaskNpc:
   - {fileID: 8444602282577545385}
   door: {fileID: 358115054}
-  mark: []
+  mark:
+  - {fileID: 95585191}
 --- !u!1 &63580815
 GameObject:
   m_ObjectHideFlags: 0
@@ -16050,8 +16051,6 @@ MonoBehaviour:
   isCloaked: 0
   targetIndicator: {fileID: 0}
   isGround: 0
-  cloakUnlocked: 0
-  manipulationUnlocked: 0
   cloakParticle: {fileID: 3453772398402652154}
   targetCode: 0
 --- !u!70 &7376686491940430278
