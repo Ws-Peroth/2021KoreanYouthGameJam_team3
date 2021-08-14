@@ -16,6 +16,7 @@ namespace peroth
         private void Start()
         {
             StageManager.instance.currentStage = SceneLoadManager.ScenesEnumToInt(Scenes.Openning);
+            MusicClass.instance.TitleSongOn();
         }
         public void NewGameButtonDown()
         {
