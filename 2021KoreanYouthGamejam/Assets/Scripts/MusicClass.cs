@@ -10,8 +10,8 @@ namespace peroth
 
         protected override void Awake()
         {
-            title = Resources.Load("StageBgm") as AudioClip;
-            stage = Resources.Load("TitleBGM") as AudioClip;
+            title = Resources.Load("TitleBGM") as AudioClip;
+            stage = Resources.Load("StageBgm") as AudioClip;
 
             _audioSource = gameObject.AddComponent<AudioSource>();
             _audioSource.playOnAwake = true;
