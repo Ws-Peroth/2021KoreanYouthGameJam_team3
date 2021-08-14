@@ -7231,7 +7231,19 @@ MonoBehaviour:
   m_Value: 2
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1307588371}
+        m_TargetAssemblyTypeName: peroth.SoundControll, Assembly-CSharp
+        m_MethodName: SetSoundSize
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1322860314
 GameObject:
   m_ObjectHideFlags: 0
@@ -31157,6 +31169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36015614a8929d243b567de3987ae145, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDebug: 0
   isDetected: 0
   isGroundCheckCirclePos: {x: 0, y: -1.76}
   speed: 3

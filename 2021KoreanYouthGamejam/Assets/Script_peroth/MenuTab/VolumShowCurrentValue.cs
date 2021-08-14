@@ -3,9 +3,8 @@ using UnityEngine.UI;
 
 namespace peroth
 {
-    public class VolumShowCurrentValue : MonoBehaviour
+    public class VolumShowCurrentValue : SoundControll
     {
-        [SerializeField] private Slider slider;
         [SerializeField] private Text currentValue;
         [SerializeField] private Text minValueText;
         [SerializeField] private Text maxValueText;

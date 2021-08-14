@@ -7,15 +7,23 @@ namespace peroth {
 
     public class SoundControll : MonoBehaviour
     {
-        [SerializeField] private Slider slider;
+        public Slider slider;
 
         private void Start()
         {
             slider.value = MusicClass.instance.GetSoundValue() * 10;
         }
+
+        private void OnEnable()
+        {
+            slider.value = MusicClass.instance.GetSoundValue() * 10;
+        }
+
         public void SetSoundSize()
         {
             MusicClass.instance.ChangeSoundValue(slider.value / 10);
         }
+
+
     }
 }

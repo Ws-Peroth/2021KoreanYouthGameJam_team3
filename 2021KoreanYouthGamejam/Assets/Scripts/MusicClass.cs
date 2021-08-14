@@ -12,12 +12,17 @@ namespace peroth
         {
             title = Resources.Load("TitleBGM") as AudioClip;
             stage = Resources.Load("StageBgm") as AudioClip;
-
+                        
             _audioSource = gameObject.AddComponent<AudioSource>();
             _audioSource.playOnAwake = true;
             _audioSource.loop = true;
 
             base.Awake();
+        }
+
+        private void Start()
+        {
+            _audioSource.volume = 0.5f;
         }
 
         public void ChangeSoundValue(float volume)
