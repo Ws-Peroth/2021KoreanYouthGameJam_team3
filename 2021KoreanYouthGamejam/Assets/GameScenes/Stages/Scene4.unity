@@ -10563,11 +10563,11 @@ MonoBehaviour:
   target: {fileID: 4232772943059885856}
   spriteRenderer: {fileID: 676269473}
   delayTime: 2
-  rotationA: 300
-  rotationB: 300
+  rotationA: 270
+  rotationB: 270
   rotationSpeed: 0
   angleRange: 20
-  distance: 4.2
+  distance: 7
   isNeutralized: 0
 --- !u!70 &676269472
 CapsuleCollider2D:
@@ -35806,11 +35806,11 @@ MonoBehaviour:
   target: {fileID: 4232772943059885856}
   spriteRenderer: {fileID: 2102841497}
   delayTime: 2
-  rotationA: 300
-  rotationB: 300
+  rotationA: 270
+  rotationB: 270
   rotationSpeed: 0
   angleRange: 20
-  distance: 4.2
+  distance: 7
   isNeutralized: 0
 --- !u!70 &2102841496
 CapsuleCollider2D:
@@ -50467,7 +50467,7 @@ MonoBehaviour:
   fieldOfView: {fileID: 8185355728091055078}
   positionA: {x: 9.4, y: -3.845}
   positionB: {x: 37.15, y: -3.845}
-  moveSpeed: 0.05
+  moveSpeed: 0.1
   angleRange: 45
   distance: 5
   delayTime: 0.1
