@@ -20,11 +20,6 @@ namespace peroth
             base.Awake();
         }
 
-        public void Start()
-        {
-
-        }
-
         public void PlayMusic()
         {
             if (_audioSource.isPlaying) return;
@@ -51,12 +46,12 @@ namespace peroth
 
         public void SetStageSong()
         {
-            _audioSource.clip = title;
+            _audioSource.clip = stage;
         }
 
         public void StageSongOn()
         {
-            _audioSource.clip = title;
+            _audioSource.clip = stage;
 
             if (_audioSource.isPlaying) return;
             _audioSource.Play();
