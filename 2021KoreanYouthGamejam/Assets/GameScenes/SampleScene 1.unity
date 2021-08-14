@@ -274,6 +274,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dontDestroyOnLoad: 0
+  gameOverCanvas: {fileID: 1699884216}
 --- !u!1 &81169754
 GameObject:
   m_ObjectHideFlags: 0

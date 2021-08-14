@@ -5,12 +5,13 @@ using UnityEngine.UI;
 
 namespace peroth
 {
-    public class TextAlphaChange : MonoBehaviour
+    public class RetryText : MonoBehaviour
     {
         [SerializeField] private Text text;
         [SerializeField] private float changeDelay = 0.006f;
         [SerializeField] private byte changeValue = 3;
         private bool isUp;
+
 
 
         // Start is called before the first frame update
