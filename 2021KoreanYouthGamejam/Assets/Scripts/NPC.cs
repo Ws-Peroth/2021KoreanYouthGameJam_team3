@@ -15,17 +15,22 @@ public class NPC : MonoBehaviour
 
     public bool didItTalk = false;
 
+    [SerializeField] public GameObject notice;
+
     private void Start()
     {
         player = FindObjectOfType<Player>();
+        notice.SetActive(true);
     }
 
     private void Update()
     {
         var distance = Vector2.Distance(player.gameObject.transform.position, transform.position);
-        if (distance <= radius && Input.GetKeyDown(KeyCode.Space))
+
+        if (!didItTalk && distance <= radius && Input.GetKeyDown(KeyCode.Space))
         {
             didItTalk = true;
+            notice.SetActive(false);
         }
         if (distance <= radius)
         {
