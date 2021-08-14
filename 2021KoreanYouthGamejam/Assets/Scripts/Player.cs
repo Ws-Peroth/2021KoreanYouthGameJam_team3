@@ -172,7 +172,7 @@ public class Player : MonoBehaviour
     private void Jump()
     {
         rb.velocity = Vector2.zero;
-        rb.AddForce(Vector2.up * 656);
+        rb.AddForce(Vector2.up * 738);
     }
 
     private bool PositionCheck(float position)
