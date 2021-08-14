@@ -1829,13 +1829,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fdf9bf5e62afb1418beea0b2132335d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jsonName: 
+  jsonName: WatchTheScafford
   voice: {fileID: 0}
   posNum: 0
   txtNum: 0
   radius: 2.5
   didItTalk: 0
-  notice: {fileID: 0}
+  notice: {fileID: 269647324}
 --- !u!1 &271648791
 GameObject:
   m_ObjectHideFlags: 0
