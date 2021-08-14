@@ -100,7 +100,7 @@ public class Player : MonoBehaviour
             0.07f,
             1 << LayerMask.NameToLayer("Ground"));
 
-        if (TalkingManager.instance.isTalking)
+        if (TalkingManager.instance.isTalking || isDetected)
         {
             return;
         }
