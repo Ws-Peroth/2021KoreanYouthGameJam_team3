@@ -476,6 +476,7 @@ GameObject:
   - component: {fileID: 57454097}
   - component: {fileID: 57454096}
   - component: {fileID: 57454098}
+  - component: {fileID: 57454099}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -538,6 +539,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dontDestroyOnLoad: 0
   gameOverCanvas: {fileID: 625297507}
+--- !u!114 &57454099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 57454095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc8c175e74e58654e95a9dfd33081f39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TalkTaskNpc:
+  - {fileID: 8444602282577545385}
+  door: {fileID: 358115054}
+  mark: []
 --- !u!1 &63580815
 GameObject:
   m_ObjectHideFlags: 0
@@ -1492,8 +1509,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 358115054}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 17.8, y: 12.2, z: 0}
-  m_LocalScale: {x: 17.736727, y: 10, z: 1}
+  m_LocalPosition: {x: 18.32, y: 7.2184, z: 0}
+  m_LocalScale: {x: 27.699446, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 792856708}
   m_RootOrder: 3
@@ -16033,6 +16050,8 @@ MonoBehaviour:
   isCloaked: 0
   targetIndicator: {fileID: 0}
   isGround: 0
+  cloakUnlocked: 0
+  manipulationUnlocked: 0
   cloakParticle: {fileID: 3453772398402652154}
   targetCode: 0
 --- !u!70 &7376686491940430278

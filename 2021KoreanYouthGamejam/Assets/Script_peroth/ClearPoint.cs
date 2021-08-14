@@ -8,7 +8,7 @@ namespace peroth
     {
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            Debug.Log("Ãæµ¹");
+            Debug.Log("enter");
             StageManager.instance.StageClear();
         }
     }
