@@ -693,7 +693,7 @@ MonoBehaviour:
   rotationA: 180
   rotationB: 180
   rotationSpeed: 0
-  angleRange: 100
+  angleRange: 180
   distance: 2
   isNeutralized: 0
 --- !u!70 &92062188
@@ -1647,10 +1647,10 @@ MonoBehaviour:
   fieldOfView: {fileID: 706489344}
   target: {fileID: 4232772943059885856}
   spriteRenderer: {fileID: 312949690}
-  delayTime: 2
+  delayTime: 1
   rotationA: 155
   rotationB: 335
-  rotationSpeed: 20
+  rotationSpeed: 80
   angleRange: 20
   distance: 6
   isNeutralized: 0
@@ -2620,7 +2620,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -23.5, y: 0, z: -10}
+  m_LocalPosition: {x: -21.182701, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1900227814}
@@ -4351,7 +4351,7 @@ MonoBehaviour:
   rotationA: 180
   rotationB: 180
   rotationSpeed: 0
-  angleRange: 100
+  angleRange: 180
   distance: 2
   isNeutralized: 0
 --- !u!70 &868015764
@@ -4563,7 +4563,7 @@ MonoBehaviour:
   itemNameText: {fileID: 1113199680}
   itemimage: {fileID: 0}
   selfTransform: {fileID: 303106948}
-  isDebug: 0
+  isDebug: 1
 --- !u!4 &898485229
 Transform:
   m_ObjectHideFlags: 0
@@ -6016,8 +6016,8 @@ MonoBehaviour:
   posB: -2.18
   moveX: 0
   moveY: 1
-  speed: 2
-  delay: 2
+  speed: 5
+  delay: 1.5
 --- !u!61 &1422078728
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7973,8 +7973,8 @@ MonoBehaviour:
   posB: -2.18
   moveX: 0
   moveY: 1
-  speed: 2
-  delay: 2
+  speed: 5
+  delay: 1.5
 --- !u!1 &1861765975
 GameObject:
   m_ObjectHideFlags: 0
@@ -8432,7 +8432,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1945492194
 RectTransform:
   m_ObjectHideFlags: 0
@@ -25969,8 +25969,8 @@ MonoBehaviour:
   fieldOfView: {fileID: 4594176350080279183}
   positionA: {x: -25.4, y: -3.8}
   positionB: {x: -14, y: -3.8}
-  moveSpeed: 0.2
-  angleRange: 75
+  moveSpeed: 0.35
+  angleRange: 25
   distance: 6
   delayTime: 0.1
 --- !u!114 &3732225917108361333
@@ -32348,7 +32348,7 @@ MonoBehaviour:
   rotationB: 270
   rotationSpeed: 0
   angleRange: 20
-  distance: 6
+  distance: 9.16
   isNeutralized: 0
 --- !u!4 &5892786934415053957
 Transform:
@@ -32358,7 +32358,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5892786934415053966}
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: -0.7071068}
-  m_LocalPosition: {x: -32.21, y: 0.06, z: 0}
+  m_LocalPosition: {x: -32.01, y: 3.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3040449729725807269}
