@@ -623,9 +623,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc8c175e74e58654e95a9dfd33081f39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TalkTaskNpc: {fileID: 0}
-  door: {fileID: 0}
-  mark: {fileID: 0}
+  TalkTaskNpc:
+  - {fileID: 269647327}
+  door: {fileID: 1135107497}
+  mark:
+  - {fileID: 269647324}
 --- !u!1 &59134969
 GameObject:
   m_ObjectHideFlags: 0
@@ -1742,6 +1744,7 @@ GameObject:
   m_Component:
   - component: {fileID: 269647326}
   - component: {fileID: 269647325}
+  - component: {fileID: 269647327}
   m_Layer: 0
   m_Name: DiscoveredMark
   m_TagString: Untagged
@@ -1808,12 +1811,31 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 269647324}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.16, y: -3, z: 0}
+  m_LocalPosition: {x: 0.01, y: -3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &269647327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 269647324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fdf9bf5e62afb1418beea0b2132335d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jsonName: 
+  voice: {fileID: 0}
+  posNum: 0
+  txtNum: 0
+  radius: 2.5
+  didItTalk: 0
+  notice: {fileID: 0}
 --- !u!1 &271648791
 GameObject:
   m_ObjectHideFlags: 0
