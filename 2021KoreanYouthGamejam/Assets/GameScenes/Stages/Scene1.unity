@@ -243,7 +243,7 @@ GameObject:
   - component: {fileID: 54556333}
   - component: {fileID: 54556334}
   - component: {fileID: 54556335}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -457,7 +457,7 @@ GameObject:
   - component: {fileID: 84591377}
   - component: {fileID: 84591379}
   - component: {fileID: 84591378}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -772,7 +772,7 @@ GameObject:
   - component: {fileID: 106356144}
   - component: {fileID: 106356146}
   - component: {fileID: 106356145}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Content
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1090,7 +1090,7 @@ GameObject:
   - component: {fileID: 217347295}
   - component: {fileID: 217347297}
   - component: {fileID: 217347296}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1169,7 +1169,7 @@ GameObject:
   - component: {fileID: 290855718}
   - component: {fileID: 290855720}
   - component: {fileID: 290855719}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: DialogueLogTitle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1379,7 +1379,7 @@ GameObject:
   - component: {fileID: 320116994}
   - component: {fileID: 320116996}
   - component: {fileID: 320116995}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: OptionButtonText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1933,7 +1933,7 @@ GameObject:
   - component: {fileID: 449024075}
   - component: {fileID: 449024077}
   - component: {fileID: 449024076}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2110,7 +2110,7 @@ GameObject:
   - component: {fileID: 476677648}
   - component: {fileID: 476677647}
   - component: {fileID: 476677646}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: CloseButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2361,7 +2361,7 @@ GameObject:
   - component: {fileID: 522612885}
   - component: {fileID: 522612884}
   - component: {fileID: 522612883}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Scroll View
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2670,7 +2670,7 @@ GameObject:
   - component: {fileID: 635809044}
   - component: {fileID: 635809046}
   - component: {fileID: 635809045}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: DialogueLogButtonText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2815,7 +2815,7 @@ GameObject:
   - component: {fileID: 654526405}
   - component: {fileID: 654526404}
   - component: {fileID: 654526403}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: ItemNameText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2895,7 +2895,7 @@ GameObject:
   - component: {fileID: 663034102}
   - component: {fileID: 663034104}
   - component: {fileID: 663034103}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: DialogueLogScreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2973,7 +2973,7 @@ GameObject:
   - component: {fileID: 700325596}
   - component: {fileID: 700325598}
   - component: {fileID: 700325597}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: InventoryRect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3153,7 +3153,7 @@ GameObject:
   - component: {fileID: 712912091}
   - component: {fileID: 712912090}
   - component: {fileID: 712912089}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: DialogueLogCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3263,7 +3263,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_TargetDisplay: 0
 --- !u!1 &722744708
 GameObject:
@@ -3437,7 +3437,7 @@ GameObject:
   - component: {fileID: 776605096}
   - component: {fileID: 776605098}
   - component: {fileID: 776605097}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: BlockTouchBackgroundObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3669,7 +3669,7 @@ GameObject:
   - component: {fileID: 813918412}
   - component: {fileID: 813918414}
   - component: {fileID: 813918413}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: InformationViewRect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3829,7 +3829,7 @@ GameObject:
   - component: {fileID: 829875441}
   - component: {fileID: 829875443}
   - component: {fileID: 829875442}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: KeySettingsText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3909,7 +3909,7 @@ GameObject:
   - component: {fileID: 842814078}
   - component: {fileID: 842814077}
   - component: {fileID: 842814076}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Scroll View
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4146,7 +4146,7 @@ GameObject:
   - component: {fileID: 968003474}
   - component: {fileID: 968003476}
   - component: {fileID: 968003475}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4225,7 +4225,7 @@ GameObject:
   - component: {fileID: 990736275}
   - component: {fileID: 990736277}
   - component: {fileID: 990736276}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: VolumControlBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4344,7 +4344,7 @@ GameObject:
   - component: {fileID: 991277514}
   - component: {fileID: 991277516}
   - component: {fileID: 991277515}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Content
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4417,7 +4417,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 995049873}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: ItemListViewerRect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4456,7 +4456,7 @@ GameObject:
   - component: {fileID: 1006437449}
   - component: {fileID: 1006437451}
   - component: {fileID: 1006437450}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: VolumText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4535,7 +4535,7 @@ GameObject:
   - component: {fileID: 1021046604}
   - component: {fileID: 1021046606}
   - component: {fileID: 1021046605}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: OptionText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4715,7 +4715,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1066759588}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4754,7 +4754,7 @@ GameObject:
   - component: {fileID: 1067258517}
   - component: {fileID: 1067258516}
   - component: {fileID: 1067258515}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: DialogueLogButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4886,7 +4886,7 @@ GameObject:
   - component: {fileID: 1067476765}
   - component: {fileID: 1067476767}
   - component: {fileID: 1067476766}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: KeySettingsScreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4964,7 +4964,7 @@ GameObject:
   - component: {fileID: 1075008833}
   - component: {fileID: 1075008835}
   - component: {fileID: 1075008834}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: MinNumberText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5046,7 +5046,7 @@ GameObject:
   - component: {fileID: 1081704680}
   - component: {fileID: 1081704679}
   - component: {fileID: 1081704678}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Viewport
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5171,7 +5171,7 @@ GameObject:
   - component: {fileID: 1120911227}
   - component: {fileID: 1120911229}
   - component: {fileID: 1120911228}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: SaveAndExitText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5250,7 +5250,7 @@ GameObject:
   - component: {fileID: 1144371136}
   - component: {fileID: 1144371138}
   - component: {fileID: 1144371137}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: BackGroundImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5325,7 +5325,7 @@ GameObject:
   - component: {fileID: 1231947936}
   - component: {fileID: 1231947938}
   - component: {fileID: 1231947937}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5664,7 +5664,7 @@ GameObject:
   - component: {fileID: 1315519356}
   - component: {fileID: 1315519358}
   - component: {fileID: 1315519357}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5832,7 +5832,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1340712693}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: VolumOption
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5871,7 +5871,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1340861150}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: ItemInformationViewerRect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5911,7 +5911,7 @@ GameObject:
   - component: {fileID: 1365468657}
   - component: {fileID: 1365468656}
   - component: {fileID: 1365468655}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: OptoinCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6009,7 +6009,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_TargetDisplay: 0
 --- !u!1 &1405145718
 GameObject:
@@ -6021,7 +6021,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1405145719}
   - component: {fileID: 1405145720}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: DialogueLogTextArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6195,7 +6195,7 @@ GameObject:
   - component: {fileID: 1435148101}
   - component: {fileID: 1435148103}
   - component: {fileID: 1435148102}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: KeySettingText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6424,7 +6424,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1450834669}
   - component: {fileID: 1450834670}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: ControlButtonsRect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6475,7 +6475,7 @@ GameObject:
   - component: {fileID: 1455268782}
   - component: {fileID: 1455268781}
   - component: {fileID: 1455268780}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: CloseButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6607,7 +6607,7 @@ GameObject:
   - component: {fileID: 1457243544}
   - component: {fileID: 1457243546}
   - component: {fileID: 1457243545}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6686,7 +6686,7 @@ GameObject:
   - component: {fileID: 1489420005}
   - component: {fileID: 1489420007}
   - component: {fileID: 1489420006}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: OptionScreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6764,7 +6764,7 @@ GameObject:
   - component: {fileID: 1500124197}
   - component: {fileID: 1500124196}
   - component: {fileID: 1500124195}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: OptionButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6897,7 +6897,7 @@ GameObject:
   - component: {fileID: 1534179224}
   - component: {fileID: 1534179223}
   - component: {fileID: 1534179222}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: MenuTab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6985,7 +6985,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 3
   m_TargetDisplay: 0
 --- !u!1 &1544033644
 GameObject:
@@ -6998,7 +6998,7 @@ GameObject:
   - component: {fileID: 1544033645}
   - component: {fileID: 1544033647}
   - component: {fileID: 1544033646}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: MaxNumberText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7079,7 +7079,7 @@ GameObject:
   - component: {fileID: 1552967012}
   - component: {fileID: 1552967014}
   - component: {fileID: 1552967013}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Content
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7155,7 +7155,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1604786022}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Handle Slide Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7194,7 +7194,7 @@ GameObject:
   - component: {fileID: 1614557539}
   - component: {fileID: 1614557538}
   - component: {fileID: 1614557537}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: CloseButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7484,7 +7484,7 @@ GameObject:
   - component: {fileID: 1653552095}
   - component: {fileID: 1653552094}
   - component: {fileID: 1653552093}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: CloseTabButton (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7616,7 +7616,7 @@ GameObject:
   - component: {fileID: 1657048563}
   - component: {fileID: 1657048562}
   - component: {fileID: 1657048561}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Viewport
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7707,7 +7707,7 @@ GameObject:
   - component: {fileID: 1664377991}
   - component: {fileID: 1664377990}
   - component: {fileID: 1664377989}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: KeySettingsCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7805,7 +7805,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_TargetDisplay: 0
 --- !u!1 &1686989438
 GameObject:
@@ -7958,7 +7958,7 @@ GameObject:
   - component: {fileID: 1697221462}
   - component: {fileID: 1697221464}
   - component: {fileID: 1697221463}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: InventoryText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8038,7 +8038,7 @@ GameObject:
   - component: {fileID: 1725203578}
   - component: {fileID: 1725203577}
   - component: {fileID: 1725203576}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Viewport
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8128,7 +8128,7 @@ GameObject:
   - component: {fileID: 1729930490}
   - component: {fileID: 1729930489}
   - component: {fileID: 1729930488}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: ItemListViewer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8234,7 +8234,7 @@ GameObject:
   - component: {fileID: 1754117848}
   - component: {fileID: 1754117850}
   - component: {fileID: 1754117849}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8309,7 +8309,7 @@ GameObject:
   - component: {fileID: 1808521504}
   - component: {fileID: 1808521506}
   - component: {fileID: 1808521505}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: BlockTouchBackgroundObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8514,7 +8514,7 @@ GameObject:
   - component: {fileID: 1859209703}
   - component: {fileID: 1859209702}
   - component: {fileID: 1859209701}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: CloseTabButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8647,7 +8647,7 @@ GameObject:
   - component: {fileID: 1889622954}
   - component: {fileID: 1889622953}
   - component: {fileID: 1889622952}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: SaveAndExitButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8995,7 +8995,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1955606359}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9156,7 +9156,7 @@ GameObject:
   - component: {fileID: 1992839859}
   - component: {fileID: 1992839858}
   - component: {fileID: 1992839857}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: KeySettingButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9288,7 +9288,7 @@ GameObject:
   - component: {fileID: 2013914202}
   - component: {fileID: 2013914204}
   - component: {fileID: 2013914203}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: CurrentValueText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9571,7 +9571,7 @@ GameObject:
   - component: {fileID: 2117088227}
   - component: {fileID: 2117088229}
   - component: {fileID: 2117088228}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: BlockTouchBackgroundObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}

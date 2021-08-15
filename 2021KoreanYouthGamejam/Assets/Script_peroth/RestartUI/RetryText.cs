@@ -16,6 +16,7 @@ namespace peroth
         {
             if (Input.GetKeyDown(KeyCode.R))
             {
+                Time.timeScale = 1;
                 SceneLoadManager.instance.SceneChange(SceneLoadManager.IntToScenesEnum(StageManager.instance.currentStage));
             }
         }
