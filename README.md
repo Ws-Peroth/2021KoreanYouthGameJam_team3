@@ -16,3 +16,6 @@
 Unity Engine (2020.3.15f2)
 
 ## 게임 실행 방법
+해당 프로젝트를 빌드하여 `2021KoreanYouthGameJam_team3\2021KoreanYouthGamejam\Build`경로에 있는, 빌드시 경로를 지정하였다면 해당 지정 경로로 가서 `Mailman of Consensus.exe`을 실행시킵니다.
+
+## 게임 소개
