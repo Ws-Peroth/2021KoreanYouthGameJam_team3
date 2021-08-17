@@ -7,4 +7,4 @@
 
 ### 게임 주제 : `사람들의 교감이 단절된 미래`
 ### [게임 세계관 및 줄거리](https://github.com/Ws-Peroth/2021KoreanYouthGameJam_team3/blob/main/Worldview.md)
-### [게임 컨셉 및 기획 의도] (https://github.com/Ws-Peroth/2021KoreanYouthGameJam_team3/blob/main/Concept.md)
+### [게임 컨셉 및 기획 의도](https://github.com/Ws-Peroth/2021KoreanYouthGameJam_team3/blob/main/Concept.md)
