@@ -6,4 +6,5 @@
 - 사용 엔진 : Unity Engine 2D (2020.3.15f2)
 
 ### 게임 주제 : `사람들의 교감이 단절된 미래`
-#### [게임 세계관](https://github.com/Ws-Peroth/2021KoreanYouthGameJam_team3/blob/main/Worldview.md)
+### [게임 세계관 및 ](https://github.com/Ws-Peroth/2021KoreanYouthGameJam_team3/blob/main/Worldview.md)
+### 
