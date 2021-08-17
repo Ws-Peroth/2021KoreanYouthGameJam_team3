@@ -527,6 +527,7 @@ public class Player : MonoBehaviour
 
     #endregion
 
+    #region Convert
     private int CodeToXIndex(int code)
     {
         for (int i = 0; i < XposCCTVList.Count; i++)
@@ -579,6 +580,7 @@ public class Player : MonoBehaviour
 
         return YposCCTVList[index].code;
     }
+    #endregion
 }
 public class CCTVListNode
 {
