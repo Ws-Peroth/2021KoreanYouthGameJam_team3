@@ -1,9 +1,7 @@
 #### 세계관 설명
-[뉴스 사례 1](https://www.hani.co.kr/arti/society/society_general/954758.html)
-
-[뉴스 사례 2](https://www.ytn.co.kr/_ln/0104_201903131615065814)
-
-[뉴스 사례 3](https://www.news1.kr/articles/3997730)
+[쿠팡 노동자 사례](https://www.hani.co.kr/arti/society/society_general/954758.html)
+[아마존 노동자 사례](https://www.ytn.co.kr/_ln/0104_201903131615065814)
+[사회 갈등 사례](https://www.news1.kr/articles/3997730)
 
 **국민을 '사회를 돌리는 부품' 정도로 취급**하여 오로지 `국가 발전의 수단`으로만 보는 지도자와 정부가 극한의 효율성을 추구하며 국민들의 생활 하나하나를 통제하는 미래입니다. 
 
